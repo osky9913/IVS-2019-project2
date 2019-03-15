@@ -7,12 +7,12 @@ Autori
 ------
 
 Vychodni Nemci a severni Madari
-- xsarva00 Marek Sarvas 
-- xsedla1h Simon Sedlacek 
-- xsvobo1t Jonas Svoboda 
-- xosval03 Martin Osvald 
+- xsedla1h Šimon Sedláček - PirxUs
+- xsarva00 Marek Sarvaš - MarekSarvas
+- xsvobo1t Jonáš Svoboda - BredieMercury
+- xosval03 Martin Osvald - osky9913
 
 Licence
 -------
 
-Tento program je poskytovan pod licenci GNU General Public License Version 3.
+Tento program je poskytovan pod licenci GNU General Public License v3.0.
