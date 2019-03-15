@@ -1,8 +1,68 @@
-Tento soubor bude obsahovat:
+Plán skupinového projektu do předmětu IVS 2019
+** Východní Němci a severní Maďaři **
 
--- stanovené termíny,
--- přidělení úkolů na projektu jednotlivým řešitelům,
--- zvolené komunikační kanály pro komunikaci v týmu a stanovená pravidla pro komunikaci (jsou-li nějaká),
--- zvolený systém pro správu verzí a hosting + informaci, jak do repozitáře mohou nahlédnout vyučující/cvičící (viz níže).
+===== TERMÍNY =====
 
-Alternativně lze odevzdat archiv xlogin01_xlogin02_xlogin03_xlogin04_plan.zip, který bude obsahovat libovolný počet souborů xlogin01_xlogin02_xlogin03_xlogin04_plan* ("*" zastupuje libovolný počet libovolných znaků, tedy např. ".mpp" či "01.jpg"), přičemž plán zde může být vytvořený v MS Projectu či jiném programu (není-li daný program ve škole dostupný, je nutno odevzdat i exportovanou verzi v PDF či jpg).
+20.3. - příprava repozitáře, komunikačních kanálů, plánovacího dokumentu
+29.3. - sada testů pro matematicou knihovnu
+31.3. - implementace funkcí matematické knihovny
+5.4.  - zpracování vstupu kalkulačky
+10.4. - kompletně funkční gui, profiler, screenshot debuggeru, screenshot programu
+15.4. - instalátor, Makefile, výsledek profilingu
+20.4. - mockup, dokumentace a uživatelská příručka, instalační manuál
+22.4. - zhodnocení projektu, skutecnost.txt, hodnoceni.txt
+
+23.4. - odevzdání repozitáře, odevzdani.txt
+1.5.  - xlogin00_problemy.txt
+
+
+===== ÚKOLY =====
+
+** xsvobo1t **
+- Kompletní návrh a vytvoření uživatelského rozhraní
+- Vytvoření uživatelské nápovědy
+- Vytvoření prezentace pro obhajobu
+
+** xosval03 **
+- Zpracování vstupu kalkulačky
+- Funkcionalita gui prvků
+- Propojení gui s matematickou knihovnou
+
+** xsarva00 **
+- Vytvoření sady testů pro matematickou knihovnu
+- Průběžné testování hotových komponent
+- Profiler
+- Kontrola dodržování termínů
+
+** xsedla1h **
+- Implementace funkcí matematické knihovny
+- Tvorba Makefile a instalátoru
+- Vytvoření manuálu pro instalaci
+- Správa repozitáře a plánovacího dokumentu
+
+
+
+===== KOMUNIKACE =====
+
+Pro obecnou komunikaci v týmu jsme se rozhodli používat jednu dedikovanou Facebook
+konverzaci, která nebude svázána žádnými pravidly.
+
+Dále budeme využívat Discord jakožto
+kompletně spam-free prostředí, kde se budou řešit výhradně věci ohledně termínů,
+problémů, a jiných věcí týkajících se striktně řešení projektu.
+
+Jako prostředí pro plánování a sledování postupu práce na projektu budeme využívat
+dokument od Google Docs. Zde se rozepíší specifikace jednotlivých úkolů, každý člen
+týmu zde má možnost se daným úkolům vyjádřit. Bude se zde udržovat přehled o již
+hotových částech úkolů (přičemž každý člen týmu je zodpovědný za správu svého úkolu),
+věcech, které jsou potřeba dodělat - každý člen má přehled o aktuálním stavu
+jednotlivých částí projektu.
+
+Dále se každé pondělí tým sejde a zhodnotí se aktuální situace.
+
+
+===== SPRÁVA VERZÍ =====
+
+Pro uložení repozitáře jsme zvolili GitHub. Repozitář se nachází na adrese
+https://github.com/PirxUs/IVS-2019-project2 a bude zpřístupněn cvičícím skrze
+email ivs.kontrola@gmail.com.
