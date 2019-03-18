@@ -47,14 +47,14 @@ Plán skupinového projektu do předmětu IVS 2019
 Pro obecnou komunikaci v týmu jsme se rozhodli používat jednu dedikovanou Facebook
 konverzaci, která nebude svázána žádnými pravidly.
 
-Dále budeme využívat Discord jakožto
+Dále budeme využívat dedikovaný Discord kanál jakožto
 kompletně spam-free prostředí, kde se budou řešit výhradně věci ohledně termínů,
 problémů, a jiných věcí týkajících se striktně řešení projektu.
 
 Jako prostředí pro plánování a sledování postupu práce na projektu budeme využívat
-dokument od Google Docs. Zde se rozepíší specifikace jednotlivých úkolů, každý člen
-týmu zde má možnost se daným úkolům vyjádřit. Bude se zde udržovat přehled o již
-hotových částech úkolů (přičemž každý člen týmu je zodpovědný za správu svého úkolu),
+dokument od Google Docs. Zde se rozepíší podrobné specifikace jednotlivých úkolů,
+každý člen týmu zde má možnost se daným úkolům vyjádřit. Bude se zde udržovat přehled o
+již hotových částech úkolů (přičemž každý člen týmu je zodpovědný za správu svých úkolů),
 věcech, které jsou potřeba dodělat - každý člen má přehled o aktuálním stavu
 jednotlivých částí projektu.
 
@@ -65,4 +65,4 @@ Dále se každé pondělí tým sejde a zhodnotí se aktuální situace.
 
 Pro uložení repozitáře jsme zvolili GitHub. Repozitář se nachází na adrese
 https://github.com/PirxUs/IVS-2019-project2 a bude zpřístupněn cvičícím skrze
-email ivs.kontrola@gmail.com.
+účet ivskontrola.
