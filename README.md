@@ -7,7 +7,7 @@ Autori
 ------
 
 Vychodni Nemci a severni Madari
-- xsedla1h Šimon Sedláček - PirxUs
+- xsedla1h Šimon Sedláček - pirxus
 - xsarva00 Marek Sarvaš - MarekSarvas
 - xsvobo1t Jonáš Svoboda - BredieMercury
 - xosval03 Martin Osvald - osky9913
