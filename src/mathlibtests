@@ -248,6 +248,10 @@ class MathLibraryTestRoot(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.mathlib.root(-7318,4917912)
 
+    def testRootZeroExponent(self):
+        with self.assertRaises(ValueError):
+            self.mathlib.root(2, 0)
+
     def testRootNaturalNumber(self):
         self.assertEqual(self.mathlib.root(4,0),0)
         self.assertEqual(self.mathlib.root(4,2),2)
