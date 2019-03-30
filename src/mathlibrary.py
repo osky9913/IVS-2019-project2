@@ -66,7 +66,7 @@ class Mathlibrary:
     # @exception Undefined Parameter 'a' was either not an integer or it was negative
     #
     # @return Value of 'a!'
-    @taticmethod
+    @staticmethod
     def factorial(a):
 
 
@@ -74,9 +74,10 @@ class Mathlibrary:
     # @brief Computes the power of two numbers
     # 
     # @param base Number whose power is to be computed
-    # @param exp The exponent, has to be a natural number
+    # @param exp The exponent, has to be a natural number or zero
     # 
     # @exception Undefined Parameter 'exp' was not a natural number
+    # or zero
     #
     # @return Value of 'base^exp'
     @staticmethod
@@ -88,12 +89,12 @@ class Mathlibrary:
     # 
     # @param base Number whose root is to be computed
     # @param n The exponent which determines the order of the root.
-    # It has to be a whole number greater or equal to zero
+    # It has to be a natural number
     # 
-    # @exception UndefinedExponent Parameter 'n' was not a whole number or
-    # it was negative
+    # @exception UndefinedExponent Parameter 'n' was not a natural number
     # @exception UndefinedRoot Parameter 'base' was negative and the exponent
     # happened to be even
+    # @exception UndefinedRoot Parameter 'base' was a negative fraction
     #
     # @return Value of the 'n-th' root of 'base'
     @staticmethod
