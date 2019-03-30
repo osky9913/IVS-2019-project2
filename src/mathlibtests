@@ -96,9 +96,9 @@ class MathLibraryTestDiv(unittest.TestCase):
         self.mathlib = Mathlibrary()
 
     def testDivByZero(self):
-        with self.assertRaises(zeroDivisionError):
+        with self.assertRaises(ZeroDivisionError):
             self.mathlib.div(2145,0)
-        with self.assertRaises(DividedByZero):
+        with self.assertRaises(ZeroDivisionError):
             self.mathlib.div(0,0)
 
     def testDivPossitive(self):
