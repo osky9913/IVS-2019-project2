@@ -41,19 +41,19 @@ class MathLibraryTestAdd(unittest.TestCase):
         self.assertEqual(self.mathlib.add(1237471,-42194914284),-42193676813)
                                 
     def testAddPositiveFloat(self):
-        self.assertAlmostEqual(self.mathlib.add(12.284523,5.21421),17.498733)
-        self.assertAlmostEqual(self.mathlib.add(0.124894,0.111111111),0.23600511)
-        self.assertAlmostEqual(self.mathlib.add(2389.4829,40124.840179),42514.323079)
-        self.assertAlmostEqual(self.mathlib.add(99.9999999,99.0001),199.0000999)
-        self.assertNotAlmostEqual(self.mathlib.add(0.0000000001,0.0000001),0.0000002)
+        self.assertAlmostEqual(self.mathlib.add(12.284523, 5.21421), 17.498733)
+        self.assertAlmostEqual(self.mathlib.add(0.124894, 0.111111111), 0.23600511)
+        self.assertAlmostEqual(self.mathlib.add(2389.4829, 40124.840179), 42514.323079)
+        self.assertAlmostEqual(self.mathlib.add(99.9999999, 99.0001), 199.0000999)
+        self.assertNotAlmostEqual(self.mathlib.add(0.0000000001, 0.0000001), 0.0000002)
 
     def testAddNegativeFloat(self):
-        self.assertAlmostEqual(self.mathlib.add(-12.284523,-5.21421),-17.498733)
-        self.assertAlmostEqual(self.mathlib.add(-0.124894,-0.111111111),-0.23600511)
-        self.assertAlmostEqual(self.mathlib.add(-2389.4829,-40124.840179),-42514.323079)
-        self.assertAlmostEqual(self.mathlib.add(-99.9999999,-99.0001),-199.0000999)
-        self.assertNotAlmostEqual(self.mathlib.add(-0.0000000001,-0.0000001),-0.0000002)
-        self.assertAlmostEqual(self.mathlib.add(0.9999998,-0.9999999),-0.0000001)
+        self.assertAlmostEqual(self.mathlib.add(-12.284523, -5.21421), -17.498733)
+        self.assertAlmostEqual(self.mathlib.add(-0.124894, -0.111111111), -0.23600511)
+        self.assertAlmostEqual(self.mathlib.add(-2389.4829, -40124.840179), -42514.323079)
+        self.assertAlmostEqual(self.mathlib.add(-99.9999999, -99.0001), -199.0000999)
+        self.assertNotAlmostEqual(self.mathlib.add(-0.0000000001, -0.0000001), -0.0000002)
+        self.assertAlmostEqual(self.mathlib.add(0.9999998, -0.9999999), -0.0000001)
 
 ##
 # @brief Testing sub function.
@@ -63,29 +63,29 @@ class MathLibraryTestSub(unittest.TestCase):
         self.mathlib = Mathlibrary()
            
     def testSubPositive(self):
-        self.assertEqual(self.mathlib.sub(2,0),2)
-        self.assertEqual(self.mathlib.sub(0,0),0)
-        self.assertEqual(self.mathlib.sub(234,212),22)
-        self.assertEqual(self.mathlib.sub(4242,1239),3003)
-        self.assertEqual(self.mathlib.sub(1234567890,2345237),1232222653)
-        self.assertEqual(self.mathlib.sub(14701742817021,14701742817021),0)
-        self.assertEqual(self.mathlib.sub(42,67),-25)
-        self.assertEqual(self.mathlib.sub(4367,5001),-634)
-        self.assertEqual(self.mathlib.sub(14314,148735481541),-148735467227)
+        self.assertEqual(self.mathlib.sub(2, 0), 2)
+        self.assertEqual(self.mathlib.sub(0, 0), 0)
+        self.assertEqual(self.mathlib.sub(234, 212), 22)
+        self.assertEqual(self.mathlib.sub(4242, 1239), 3003)
+        self.assertEqual(self.mathlib.sub(1234567890, 2345237), 1232222653)
+        self.assertEqual(self.mathlib.sub(14701742817021, 14701742817021), 0)
+        self.assertEqual(self.mathlib.sub(42, 67), -25)
+        self.assertEqual(self.mathlib.sub(4367, 5001), -634)
+        self.assertEqual(self.mathlib.sub(14314, 148735481541), -148735467227)
                           
     def testSubNegative(self):
-        self.assertEqual(self.mathlib.sub(-2,0),-2)
-        self.assertEqual(self.mathlib.sub(-123,45),-168)
-        self.assertEqual(self.mathlib.sub(347,-319),666)
-        self.assertEqual(self.mathlib.sub(-8654,-69),-8585)
-        self.assertEqual(self.mathlib.sub(-1234567890,2345237),-1236913127)
-        self.assertEqual(self.mathlib.sub(-14701742817021,14701742817021),-29403485634042)
-        self.assertEqual(self.mathlib.sub(-14701742817021,-14701742817021),0)
+        self.assertEqual(self.mathlib.sub(-2, 0), -2)
+        self.assertEqual(self.mathlib.sub(-123, 45), -168)
+        self.assertEqual(self.mathlib.sub(347, -319), 666)
+        self.assertEqual(self.mathlib.sub(-8654, -69), -8585)
+        self.assertEqual(self.mathlib.sub(-1234567890, 2345237), -1236913127)
+        self.assertEqual(self.mathlib.sub(-14701742817021, 14701742817021), -29403485634042)
+        self.assertEqual(self.mathlib.sub(-14701742817021, -14701742817021), 0)
                                        
     def testSubFloat(self):
-        self.assertAlmostEqual(self.mathlib.sub(1.242,0.239),1.003)
-        self.assertAlmostEqual(self.mathlib.sub(12.134532,32.5239905),-20.3894585)
-        self.assertAlmostEqual(self.mathlib.sub(-34.6364329,-805.8520399),771.215607)
+        self.assertAlmostEqual(self.mathlib.sub(1.242, 0.239), 1.003)
+        self.assertAlmostEqual(self.mathlib.sub(12.134532, 32.5239905), -20.3894585)
+        self.assertAlmostEqual(self.mathlib.sub(-34.6364329, -805.8520399), 771.215607)
 
 
 ##
@@ -97,26 +97,26 @@ class MathLibraryTestDiv(unittest.TestCase):
 
     def testDivByZero(self):
         with self.assertRaises(ZeroDivisionError):
-            self.mathlib.div(2145,0)
+            self.mathlib.div(2145, 0)
         with self.assertRaises(ZeroDivisionError):
-            self.mathlib.div(0,0)
+            self.mathlib.div(0, 0)
 
     def testDivPossitive(self):
-        self.assertEqual(self.mathlib.div(0,2),0)
-        self.assertEqual(self.mathlib.div(234,2),117)
-        self.assertEqual(self.mathlib.div(10206,42),243)
-        self.assertEqual(self.mathlib.div(11348337,49127),231)
+        self.assertEqual(self.mathlib.div(0, 2), 0)
+        self.assertEqual(self.mathlib.div(234, 2), 117)
+        self.assertEqual(self.mathlib.div(10206, 42), 243)
+        self.assertEqual(self.mathlib.div(11348337, 49127), 231)
 
     def testDivNegative(self):
-        self.assertEqual(self.mathlib.div(-234,117),-2)
-        self.assertEqual(self.mathlib.div(-10206,-42),243)
-        self.assertEqual(self.mathlib.div(11348337,-49127),-231)
+        self.assertEqual(self.mathlib.div(-234, 117), -2)
+        self.assertEqual(self.mathlib.div(-10206, -42), 243)
+        self.assertEqual(self.mathlib.div(11348337, -49127), -231)
 
     def testDivFloat(self):
-        self.assertAlmostEqual(self.mathlib.div(2,3),0.6666666666)
-        self.assertAlmostEqual(self.mathlib.sub(345,-17),20,294117647)
-        self.assertAlmostEqual(self.mathlib.div(840143,4910),171.1085539714)
-        self.assertAlmostEqual(self.mathlib.div(784.893253,9523.7329),0.08241445463)
+        self.assertAlmostEqual(self.mathlib.div(2, 3), 0.6666666666)
+        self.assertAlmostEqual(self.mathlib.sub(345, -17), 20.294117647)
+        self.assertAlmostEqual(self.mathlib.div(840143, 4910), 171.1085539714)
+        self.assertAlmostEqual(self.mathlib.div(784.893253, 9523.7329), 0.08241445463)
 
 
 ##
@@ -127,22 +127,22 @@ class MathLibraryTestMul(unittest.TestCase):
         self.mathlib = Mathlibrary()
 
     def testMulPositive(self):
-        self.assertEqual(self.mathlib.mul(5,8),40)
-        self.assertEqual(self.mathlib.mul(19247,0),0)
-        self.assertEqual(self.mathlib.mul(0,701134),0)
-        self.assertEqual(self.mathlib.mul(12442,823),10239766)
+        self.assertEqual(self.mathlib.mul(5, 8), 40)
+        self.assertEqual(self.mathlib.mul(19247, 0), 0)
+        self.assertEqual(self.mathlib.mul(0, 701134), 0)
+        self.assertEqual(self.mathlib.mul(12442, 823), 10239766)
 
     def testMulNegative(self):
-        self.assertEqual(self.mathlib.mul(-5,8),-40)
-        self.assertEqual(self.mathlib.mul(-5,-8),40)
-        self.assertEqual(self.mathlib.mul(-9313,7053170),-65686172210)
-        self.assertEqual(self.mathlib.mul(0,-701134),0)
+        self.assertEqual(self.mathlib.mul(-5, 8), -40)
+        self.assertEqual(self.mathlib.mul(-5, -8), 40)
+        self.assertEqual(self.mathlib.mul(-9313, 7053170), -65686172210)
+        self.assertEqual(self.mathlib.mul(0, -701134), 0)
 
     def testMulFloat(self):
-        self.assertAlmostEqual(self.mathlib.mul(1.5132,8.85130),13.39378716)
-        self.assertAlmostEqual(self.mathlib.mul(5.841021,0.843103),4.9245823281)
-        self.assertAlmostEqual(self.mathlib.mul(-34.4104921,913.83191),-31445.405719782911)
-        self.assertAlmostEqual(self.mathlib.mul(-794.7415124,-0.05923),47.072539779452)
+        self.assertAlmostEqual(self.mathlib.mul(1.5132, 8.85130), 13.39378716)
+        self.assertAlmostEqual(self.mathlib.mul(5.841021, 0.843103), 4.9245823281)
+        self.assertAlmostEqual(self.mathlib.mul(-34.4104921, 913.83191), -31445.405719782911)
+        self.assertAlmostEqual(self.mathlib.mul(-794.7415124, -0.05923), 47.072539779452)
 
 ##
 # @brief Testing factorial function and its exception handling when
@@ -173,10 +173,10 @@ class MathLibraryTestFactorial(unittest.TestCase):
             self.mathlib.factorial(0.0000001)
 
     def testFactorialPositive(self):
-        self.assertEqual(self.mathlib.factorial(0),1)
-        self.assertEqual(self.mathlib.factorial(1),1)
-        self.assertEqual(self.mathlib.factorial(6),720)
-        self.assertEqual(self.mathlib.factorial(42),1405006117752879898543142606244511569936384000000000)
+        self.assertEqual(self.mathlib.factorial(0), 1)
+        self.assertEqual(self.mathlib.factorial(1), 1)
+        self.assertEqual(self.mathlib.factorial(6), 720)
+        self.assertEqual(self.mathlib.factorial(42), 1405006117752879898543142606244511569936384000000000)
 
 
 ##
@@ -189,15 +189,15 @@ class MathLibraryTestPow(unittest.TestCase):
 
     def testPowNegativeExponent(self):
         with self.assertRaises(ValueError):
-            self.mathlib.pow(-5,-4)
+            self.mathlib.pow(-5, -4)
         with self.assertRaises(ValueError):
-            self.mathlib.pow(423,-5892)
+            self.mathlib.pow(423, -5892)
 
     def testPowFloatExponent(self):
         with self.assertRaises(ValueError):
-            self.mathlib.pow(42,4.20424)
+            self.mathlib.pow(42, 4.20424)
         with self.assertRaises(ValueError):
-            self.mathlib.pow(532.43,49.00001)
+            self.mathlib.pow(532.43, 49.00001)
 
     def testPowZeroExponent(self):
         self.assertEqual(self.mathlib.pow(0, 0), 1)
@@ -207,17 +207,17 @@ class MathLibraryTestPow(unittest.TestCase):
         self.assertEqual(self.mathlib.pow(12.3, 0), 1)
 
     def testPowEvenExponent(self):
-        self.assertEqual(self.mathlib.pow(2,2),4)
-        self.assertEqual(self.mathlib.pow(12,6),2985984)
-        self.assertEqual(self.mathlib.pow(43,4),3418801)
-        self.assertEqual(slef.mathlib.pow(-4,2),16)
-        self.assertEqual(self.mathlib.pow(-80,4),40960000)
+        self.assertEqual(self.mathlib.pow(2, 2), 4)
+        self.assertEqual(self.mathlib.pow(12, 6), 2985984)
+        self.assertEqual(self.mathlib.pow(43, 4), 3418801)
+        self.assertEqual(slef.mathlib.pow(-4, 2), 16)
+        self.assertEqual(self.mathlib.pow(-80, 4), 40960000)
 
     def testPowOddExponent(self):
-        self.assertEqual(self.mathlib.pow(3,3),27)
-        self.assertEqual(self.mathlib.pow(47,5),229345007)
-        self.assertEqual(self.mathlib.pow(-12,7),-35831808)
-        self.assertEqual(self.mathlib.pow(-37,5),-69343957)
+        self.assertEqual(self.mathlib.pow(3, 3), 27)
+        self.assertEqual(self.mathlib.pow(47, 5), 229345007)
+        self.assertEqual(self.mathlib.pow(-12, 7), -35831808)
+        self.assertEqual(self.mathlib.pow(-37, 5), -69343957)
 
 
 ##
@@ -231,40 +231,40 @@ class MathLibraryTestRoot(unittest.TestCase):
 
     def testRootNegativeExponent(self):
         with self.assertRaises(ValueError):
-            self.mathlib.root(5,-2)
+            self.mathlib.root(5, -2)
         with self.assertRaises(ValueError):
-            self.mathlib.root(42,-421)
+            self.mathlib.root(42, -421)
 
     def testRootFloatExponent(self):
         with self.assertRaises(ValueError):
-            self.mathlib.root(2,0.00001)
+            self.mathlib.root(2, 0.00001)
         with self.assertRaises(ValueError):
-            self.mathlib.root(4194,12.4201412)
+            self.mathlib.root(4194, 12.4201412)
         with self.assertRaises(ValueError):
-            self.mathlib.root(935295,75392.000001)
+            self.mathlib.root(935295, 75392.000001)
 
     def testRootEvenNegativeBase(self):
         with self.assertRaises(ValueError):
-            self.mathlib.root(-3,6)
+            self.mathlib.root(-3, 6)
         with self.assertRaises(ValueError):
-            self.mathlib.root(-7318,4917912)
+            self.mathlib.root(-7318, 4917912)
 
     def testRootFractionNegativeBase(self):
         with self.assertRaises(ValueError):
-            self.mathlib.root(-0.5,6)
+            self.mathlib.root(-0.5, 6)
         with self.assertRaises(ValueError):
-            self.mathlib.root(-1.2,4917912)
+            self.mathlib.root(-1.2, 4917912)
 
     def testRootZeroExponent(self):
         with self.assertRaises(ValueError):
             self.mathlib.root(2, 0)
 
     def testRootNaturalExponent(self):
-        self.assertEqual(self.mathlib.root(4,2),2)
-        self.assertEqual(self.mathlib.root(-27,3),-3)
-        self.assertEqual(self.mathlib.root(907784931546351634835748413459499319296,24),42)
-        self.assertEqual(self.mathlib.root(-62748517,7),-13)
-        self.assertEqual(self.mathlib.root(109418989131512359209,42),3)
+        self.assertEqual(self.mathlib.root(4, 2), 2)
+        self.assertEqual(self.mathlib.root(-27, 3), -3)
+        self.assertEqual(self.mathlib.root(907784931546351634835748413459499319296, 24), 42)
+        self.assertEqual(self.mathlib.root(-62748517, 7), -13)
+        self.assertEqual(self.mathlib.root(109418989131512359209, 42), 3)
 
 
 ##
@@ -290,15 +290,15 @@ class MathLibraryTestLn(unittest.TestCase):
             self.mathlib.ln(0.00000)
 
     def testLnNaturalNumberGreaterThanOne(self):
-        self.assertAlmostEqual(self.mathlib.ln(math.e),1)
-        self.assertAlmostEqual(self.mathlib.ln(2),0.693147180)
-        self.assertAlmostEqual(self.mathlib.ln(42),3.73766961828)
-        self.assertAlmostEqual(self.mathlib.ln(17349),9.76129014682632)
+        self.assertAlmostEqual(self.mathlib.ln(math.e), 1)
+        self.assertAlmostEqual(self.mathlib.ln(2), 0.693147180)
+        self.assertAlmostEqual(self.mathlib.ln(42), 3.73766961828)
+        self.assertAlmostEqual(self.mathlib.ln(17349), 9.76129014682632)
 
     def testLnNaturalNumberLowerThanOne(self):
-        self.assertAlmostEqual(self.mathlib.ln(0.8257),-0.19152376755875)
-        self.assertAlmostEqual(self.mathlib.ln(0.541),-0.6143360001356)
-        self.assertAlmostEqual(self.mathlib.ln(0.0042),-5.472670753692814)
+        self.assertAlmostEqual(self.mathlib.ln(0.8257), -0.19152376755875)
+        self.assertAlmostEqual(self.mathlib.ln(0.541), -0.6143360001356)
+        self.assertAlmostEqual(self.mathlib.ln(0.0042), -5.472670753692814)
 
 if __name__ == '__main__':
     unittest.main()
