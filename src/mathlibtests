@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 #VUT FIT 1BIT
 #IVS-Project2
@@ -114,7 +114,7 @@ class MathLibraryTestDiv(unittest.TestCase):
 
     def testDivFloat(self):
         self.assertAlmostEqual(self.mathlib.div(2, 3), 0.6666666666)
-        self.assertAlmostEqual(self.mathlib.sub(345, -17), 20.294117647)
+        self.assertAlmostEqual(self.mathlib.div(345, -17), -20.294117647)
         self.assertAlmostEqual(self.mathlib.div(840143, 4910), 171.1085539714)
         self.assertAlmostEqual(self.mathlib.div(784.893253, 9523.7329), 0.08241445463)
 
@@ -210,7 +210,7 @@ class MathLibraryTestPow(unittest.TestCase):
         self.assertEqual(self.mathlib.pow(2, 2), 4)
         self.assertEqual(self.mathlib.pow(12, 6), 2985984)
         self.assertEqual(self.mathlib.pow(43, 4), 3418801)
-        self.assertEqual(slef.mathlib.pow(-4, 2), 16)
+        self.assertEqual(self.mathlib.pow(-4, 2), 16)
         self.assertEqual(self.mathlib.pow(-80, 4), 40960000)
 
     def testPowOddExponent(self):
