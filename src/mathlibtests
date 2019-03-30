@@ -30,15 +30,15 @@ class MathLibraryTestAdd(unittest.TestCase):
     def testAddPositive(self):
         self.assertEqual(self.mathlib.add(0, 0), 0)
         self.assertEqual(self.mathlib.add(42, 37), 79)
-        self.assertEqual(self.mathlib.add(234, 743),977)
-        self.assertEqual(self.mathlib.add(10000, 233891),243891)
+        self.assertEqual(self.mathlib.add(234, 743), 977)
+        self.assertEqual(self.mathlib.add(10000, 233891), 243891)
                      
     def testAddNegative(self):
-        self.assertEqual(self.mathlib.add(-14, -48),-62)
+        self.assertEqual(self.mathlib.add(-14, -48), -62)
         self.assertEqual(self.mathlib.add(-34, 56), 22)
-        self.assertEqual(self.mathlib.add(-2938,-230),-3168)
-        self.assertEqual(self.mathlib.add(-83924, 21481),-62443)
-        self.assertEqual(self.mathlib.add(1237471,-42194914284),-42193676813)
+        self.assertEqual(self.mathlib.add(-2938, -230), -3168)
+        self.assertEqual(self.mathlib.add(-83924, 21481), -62443)
+        self.assertEqual(self.mathlib.add(1237471, -42194914284), -42193676813)
                                 
     def testAddPositiveFloat(self):
         self.assertAlmostEqual(self.mathlib.add(12.284523, 5.21421), 17.498733)
