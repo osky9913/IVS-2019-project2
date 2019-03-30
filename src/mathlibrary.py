@@ -66,7 +66,7 @@ class Mathlibrary:
     # @exception Undefined Parameter 'a' was either not an integer or it was negative
     #
     # @return Value of 'a!'
-    @taticmethod
+    @staticmethod
     def factorial(a):
 
 
