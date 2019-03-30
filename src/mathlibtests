@@ -200,10 +200,11 @@ class MathLibraryTestPow(unittest.TestCase):
             self.mathlib.pow(532.43,49.00001)
 
     def testPowZeroExponent(self):
-        with self.assertRaises(ValueError):
-            self.mathlib.pow(0,0)
-        with self.assertRaises(ValueError):
-            self.mathlib.pow(6481,0)
+        self.assertEqual(self.mathlib.pow(0, 0), 1)
+        self.assertEqual(self.mathlib.pow(123, 0), 1)
+        self.assertEqual(self.mathlib.pow(-123, 0), 1)
+        self.assertEqual(self.mathlib.pow(-12.3, 0), 1)
+        self.assertEqual(self.mathlib.pow(12.3, 0), 1)
 
     def testPowEvenExponent(self):
         self.assertEqual(self.mathlib.pow(2,2),4)
@@ -228,13 +229,13 @@ class MathLibraryTestRoot(unittest.TestCase):
     def setUp(self):
         self.mathlib = Mathlibrary()
 
-    def testRootNegative(self):
+    def testRootNegativeExponent(self):
         with self.assertRaises(ValueError):
             self.mathlib.root(5,-2)
         with self.assertRaises(ValueError):
             self.mathlib.root(42,-421)
 
-    def testRootFloat(self):
+    def testRootFloatExponent(self):
         with self.assertRaises(ValueError):
             self.mathlib.root(2,0.00001)
         with self.assertRaises(ValueError):
@@ -242,18 +243,23 @@ class MathLibraryTestRoot(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.mathlib.root(935295,75392.000001)
 
-    def testEvenRootNegativeBase(self):
+    def testRootEvenNegativeBase(self):
         with self.assertRaises(ValueError):
             self.mathlib.root(-3,6)
         with self.assertRaises(ValueError):
             self.mathlib.root(-7318,4917912)
 
+    def testRootFractionNegativeBase(self):
+        with self.assertRaises(ValueError):
+            self.mathlib.root(-0.5,6)
+        with self.assertRaises(ValueError):
+            self.mathlib.root(-1.2,4917912)
+
     def testRootZeroExponent(self):
         with self.assertRaises(ValueError):
             self.mathlib.root(2, 0)
 
-    def testRootNaturalNumber(self):
-        self.assertEqual(self.mathlib.root(4,0),0)
+    def testRootNaturalExponent(self):
         self.assertEqual(self.mathlib.root(4,2),2)
         self.assertEqual(self.mathlib.root(-27,3),-3)
         self.assertEqual(self.mathlib.root(907784931546351634835748413459499319296,24),42)
