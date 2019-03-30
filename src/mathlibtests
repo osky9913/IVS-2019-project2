@@ -131,9 +131,74 @@ class MathLibraryTestMul(unittest.TestCase):
         self.assertAlmostEqual(self.mathlib.mul(-794.7415124,-0.05923),47.072539779452)
 
 
-#class MathLibraryTestFactorial(unittest.TestCase):
+class MathLibraryTestFactorial(unittest.TestCase):
+    def setUp(self):
+        self.mathlib = Mathlibrary()
 
-#class MathLibraryTestPow(unittest.TestCase):
+    def testFactorialNotaNumber(self):
+        with self.assertRaises(ValueError):
+            self.mathlib.factorial("XX")
+        with self.assertRaises(ValueError):
+            self.mathlib.factorial("qwert")
+
+    def testFactorialNegative(self):
+        with self.assertRaises(ValueError):
+            self.mathlib.factorial(-42)
+        with self.assertRaises(ValueError):
+            self.mathlib.factorial(-75319)
+
+    def testFactorialFloat(self):
+        with self.assertRaises(ValueError):
+            self.mathlib.factorial(12.4242)
+
+        with self.assertRaises(ValueError):
+            self.mathlib.factorial(0.8410571)
+
+        with self.assertRaises(ValueError):
+            self.mathlib.factorial(0.0000001)
+
+    def testFactorialPositive(self):
+        self.assertEqual(self.mathlib.factorial(0),1)
+        self.assertEqual(self.mathlib.factorial(1),1)
+        self.assertEqual(self.mathlib.factorial(6),720)
+        self.assertEqual(self.mathlib.factorial(42),1405006117752879898543142606244511569936384000000000)
+
+
+class MathLibraryTestPow(unittest.TestCase):
+    def setUp(self):
+        self.mathlib = Mathlibrary()
+
+    def testPowNegativExponent(self):
+        with self.assertRaises(ValueError):
+            self.mathlib.pow(-5,-4)
+        with self.assertRaises(ValueError):
+            self.mathlib.pow(423,-5892)
+
+    def testPowFloatExponent(self):
+        with self.assertRaises(ValueError):
+            self.mathlib.pow(42,4.20424)
+        with self.assertRaises(ValueError):
+            self.mathlib.pow(532.43,49.00001)
+
+    def testPowZeroExponent(self):
+        with self.assertRaises(ValueError):
+            self.mathlib.pow(0,0)
+        with self.assertRaises(ValueError):
+            self.mathlib.pow(6481,0)
+
+    def testPowEvenExponent(self):
+        self.assertEqual(self.mathlib.pow(2,2),4)
+        self.assertEqual(self.mathlib.pow(12,6),2985984)
+        self.assertEqual(self.mathlib.pow(43,4),3418801)
+        self.assertEqual(slef.mathlib.pow(-4,2),16)
+        self.assertEqual(self.mathlib.pow(-80,4),40960000)
+
+    def testPowOddExponent(self):
+        self.assertEqual(self.mathlib.pow(3,3),27)
+        self.assertEqual(self.mathlib.pow(47,5),229345007)
+        self.assertEqual(self.mathlib.pow(-12,7),-35831808)
+        self.assertEqual(self.mathlib.pow(-37,5),-69343957)
+
 
 #class MathLibraryTestRoot(unittest.TestCase):
 
