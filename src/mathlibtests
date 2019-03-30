@@ -1,0 +1,39 @@
+#!/usr/bin/python
+
+#VUT FIT 1BIT
+#IVS-Project2
+#Author: Marek Sarvas
+#Login: xsarva00
+
+##
+# @package mathlibtests
+# Unit tests for mathematical functions of calculator
+# 
+# Modul contains various tests to check
+# functionality of individual functions.
+
+
+#Run tests with ./mathlib_tests in src folder
+import unittest
+from mathlibrary import Mathlibrary
+
+class MathlibraryTestAdd(unittest.TestCase):
+
+class MathLibraryTestSub(unittest.TestCase):
+
+class MathLibraryTestDiv(unittest.TestCase):
+
+class MathLibraryTestMul(unittest.TestCase):
+
+class MathLibraryTestFactorial(unittest.TestCase):
+
+class MathLibraryTestPow(unittest.TestCase):
+
+class MathLibraryTestRoot(unittest.TestCase):
+
+
+class MathLibraryTestLn(unittest.TestCase):
+
+if __name__ == '__main__':
+    unittest.main()
+
