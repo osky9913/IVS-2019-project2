@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-
 ##
 # @package mathlibrary
 # Library of mathematical methods for the calculator
