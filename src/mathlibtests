@@ -18,7 +18,7 @@
 import unittest
 import math
 from mathlibrary import Mathlibrary
-
+from evaluate import resolve
 
 ##
 # @brief Testing add function.
@@ -299,6 +299,46 @@ class MathLibraryTestLn(unittest.TestCase):
         self.assertAlmostEqual(self.mathlib.ln(0.8257), -0.19152376755875)
         self.assertAlmostEqual(self.mathlib.ln(0.541), -0.6143360001356)
         self.assertAlmostEqual(self.mathlib.ln(0.0042), -5.472670753692814)
+
+
+##
+# @breif Testing evaluation of expressions given to calculator and 
+# exception handling caused by incorrect expression given
+
+
+class evaluateExpressionTest (unittest.TestCase):
+    def testIncorrectExpressions(self):
+        with self.assertRaises(ExpressionError):
+            resolve("( ) )")
+        with self.assertRaises(ExpressionError):
+            resolve("( ( ( )")
+        with self.assertRaises(ExpressionError):
+            resolve("- - 234")
+        with self.assertRaises(ExpressionError):
+            resolve("( - ) + 42.42")
+        with self.assertRaises(ExpressionError):
+            resolve("9 + - 3 * / 12 ) ( - 2 ")
+        with self.assertRaises(ExpressionError):
+            resolve("((((((((2+2)))))))")
+        with self.assertRaises(ExpressionError):
+            resolve("√ ^ 2")
+        with self.assertRaises(ExpressionError):
+            resolve("2 * 4 - * √3")
+#
+#    def testCorrectExpressions(self):
+#        self.assertEqual(resolve("4 - 2"), 2)
+#        self.assertEqual(resolve("( 5 + 3 ) * 2"), 16)
+#        self.assertEqual(resolve("5 - 3 * 2"), -1)
+#        self.assertEqual(resolve("8 + 5 * √9"), 23)
+#        self.assertEqual(resolve( 
+#        self.assertEqual(resolve( 
+#        self.assertEqual(resolve( 
+#        self.assertEqual(resolve( 
+#        self.assertEqual(resolve( 
+
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
