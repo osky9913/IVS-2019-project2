@@ -324,17 +324,26 @@ class evaluateExpressionTest (unittest.TestCase):
             resolve("√ ^ 2")
         with self.assertRaises(ExpressionError):
             resolve("2 * 4 - * √3")
-#
-#    def testCorrectExpressions(self):
-#        self.assertEqual(resolve("4 - 2"), 2)
-#        self.assertEqual(resolve("( 5 + 3 ) * 2"), 16)
-#        self.assertEqual(resolve("5 - 3 * 2"), -1)
-#        self.assertEqual(resolve("8 + 5 * √9"), 23)
-#        self.assertEqual(resolve( 
-#        self.assertEqual(resolve( 
-#        self.assertEqual(resolve( 
-#        self.assertEqual(resolve( 
-#        self.assertEqual(resolve( 
+        with self.assertRaises(ExpressionError):
+            resolve("3 ^ 2 ^ 2")
+
+    def testCorrectExpressionsBasicOperation(self):
+        self.assertEqual(resolve("4 - 2"), 2)
+        self.assertEqual(resolve("( 5 + 3 ) * 2"), 16)
+        self.assertEqual(resolve("5 - 3 * 2"), -1)
+        self.assertEqual(resolve("12 + 8 - 35 + 7"), -8)
+
+    def testCorrectExpressionsRootPow(self):
+        self.assertEqual(resolve("8 + 5 * √9"), 23)
+        self.assertEqual(resolve("2 √ 25 * 6"), 30)
+        self.assertEqual(resolve("5 √ 32 + 6 √ 64"), 4)
+        self.assertEqual(resolve("3 ^ 2 ^ 2"), 81)
+        self.assertEqual(resolve("
+
+    def  testCorrectExpressionsBrackets(self)
+        self.assertEqual(resolve("( ( 6 - 4 ) - ( 9 + 2 ) ) * 2"), -18)
+        self.assertEqual(resolve("( ( ( - 5 ) + ( - 2 ) ) + 10 ) * 3"), 9)
+        self.assertEqual(resolve("( ( 5 + 6 ) ) * 3"), 33)    
 
 
 
