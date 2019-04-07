@@ -1,5 +1,5 @@
-#!/usr/bin/python
-
+#!/usr/bin/python3
+# coding: utf-8
 #VUT FIT 1BIT
 #IVS-Project2
 #Author: Marek Sarvas
@@ -308,24 +308,22 @@ class MathLibraryTestLn(unittest.TestCase):
 
 class evaluateExpressionTest (unittest.TestCase):
     def testIncorrectExpressions(self):
-        with self.assertRaises(ExpressionError):
+        with self.assertRaises(ValueError):
             resolve("( ) )")
-        with self.assertRaises(ExpressionError):
+        with self.assertRaises(ValueError):
             resolve("( ( ( )")
-        with self.assertRaises(ExpressionError):
+        with self.assertRaises(ValueError):
             resolve("- - 234")
-        with self.assertRaises(ExpressionError):
+        with self.assertRaises(ValueError):
             resolve("( - ) + 42.42")
-        with self.assertRaises(ExpressionError):
+        with self.assertRaises(ValueError):
             resolve("9 + - 3 * / 12 ) ( - 2 ")
-        with self.assertRaises(ExpressionError):
-            resolve("((((((((2+2)))))))")
-        with self.assertRaises(ExpressionError):
+        with self.assertRaises(ValueError):
+            resolve("( ( ( ( ( ( ( ( 2 + 2 ) ) ) ) ) ) )")
+        with self.assertRaises(ValueError):
             resolve("√ ^ 2")
-        with self.assertRaises(ExpressionError):
-            resolve("2 * 4 - * √3")
-        with self.assertRaises(ExpressionError):
-            resolve("3 ^ 2 ^ 2")
+        with self.assertRaises(ValueError):
+            resolve("2 * 4 - * √ 3")
 
     def testCorrectExpressionsBasicOperation(self):
         self.assertEqual(resolve("4 - 2"), 2)
@@ -334,20 +332,21 @@ class evaluateExpressionTest (unittest.TestCase):
         self.assertEqual(resolve("12 + 8 - 35 + 7"), -8)
 
     def testCorrectExpressionsRootPow(self):
-        self.assertEqual(resolve("8 + 5 * √9"), 23)
+        self.assertEqual(resolve("8 + 5 * 2 √ 9"), 23)
         self.assertEqual(resolve("2 √ 25 * 6"), 30)
         self.assertEqual(resolve("5 √ 32 + 6 √ 64"), 4)
         self.assertEqual(resolve("3 ^ 2 ^ 2"), 81)
-        self.assertEqual(resolve("
 
-    def  testCorrectExpressionsBrackets(self)
+    def  testCorrectExpressionsBrackets(self):
         self.assertEqual(resolve("( ( 6 - 4 ) - ( 9 + 2 ) ) * 2"), -18)
         self.assertEqual(resolve("( ( ( - 5 ) + ( - 2 ) ) + 10 ) * 3"), 9)
         self.assertEqual(resolve("( ( 5 + 6 ) ) * 3"), 33)    
-
-
-
-
+    
+    def testCorrectExpressionsFloat(self):
+        self.assertAlmostEqual(resolve("2.5 + 3.6 - 2.3"), 3.8)
+        self.assertAlmostEqual(resolve("4.1 * 12.41 / 9.314"), 5.4628516212153)
+        self.assertAlmostEqual(resolve("2 √ 2 * 2 √ 23 "), 6.782329983125)
+        self.assertAlmostEqual(resolve("( ( 5 - 8 ) + 5 √ 42 ) * 4.2"), -3.7304997871396)
 
 if __name__ == '__main__':
     unittest.main()
