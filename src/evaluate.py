@@ -152,3 +152,72 @@ def postfixEval(postfixExpr):
 
 
 
+"""
+@brief checked if the mathematical expression is correct ( infix ) 
+@param expression is string of mathematical expression
+@return boolean True or false
+@author Martin Osvald xosval03
+"""
+def validate(expression):
+    expression=expression.split()
+    #print(expression)
+    flagNumber = False
+    counterOfLeft=0
+    counterOfRight=0
+    
+    
+    for i in expression:
+        #print(i)
+        if i == '.':
+            return False
+
+
+        if isNumber(i)==True:
+            flagNumber = True
+
+        elif(i =='('):
+            counterOfLeft+=1
+            flagNumber = False
+
+        elif(i ==')'):
+            counterOfRight+=1
+
+        elif(counterOfRight > counterOfLeft):
+            return False
+    
+        else:
+            continue
+    
+
+
+    for i in range(0,len(expression)):
+        #print(i)
+        if (i == 0) and (expression[i] in "√^+*/"):
+            return False
+        elif (expression[i]   in "√+^-*/" ) and (expression[i-1] in "√+^-*/" )  :
+            return False
+        else:
+            continue
+
+
+    if ( expression[len(expression)-1] in "√+^-*/" ):
+        return False 
+
+    for i in range(0,len(expression)):
+        if expression[i]   in "√+^-*/":
+            if expression[i+1] == ')':
+                return False
+
+
+
+    if( counterOfRight != counterOfLeft):
+        return False
+    
+    if( flagNumber == False):
+        return False
+
+    
+
+    return True
+
+
