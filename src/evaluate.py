@@ -24,7 +24,7 @@ def isNumber(s):
         
         if i not in "0123456789.":
             return False
-        if s[0] == '.' or s[-1]:
+        if s[0] == '.' or s[-1] == '.':
             return False
 
     return True
