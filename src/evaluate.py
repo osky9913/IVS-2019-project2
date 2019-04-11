@@ -100,3 +100,26 @@ def infixToPostfix(infixexpr):
     return " ".join(postfixList)
 
 
+"""
+@brief function for stack evaluation , it's connected with Mathlibrary
+@param op  is operator
+@param op1 is number
+@param op2 is number  
+@return result
+@author Martin Osvald xosval03
+"""
+
+def doMath(op, op1, op2):
+    if op == "*":
+        return Mathlibrary.mul(op1,op2)  
+    elif op == "/":
+        return Mathlibrary.div(op1,op2)
+    elif op == "+":
+        return Mathlibrary.add(op1,op2)
+    elif op == "√":
+        return Mathlibrary.root(op2,int(op1))
+    elif op == "^":
+        return Mathlibrary.pow(op1,int(op2))
+
+    else:
+        return Mathlibrary.sub(op1,op2)
