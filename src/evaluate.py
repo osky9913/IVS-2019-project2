@@ -227,7 +227,16 @@ def validate(expression):
     return True
 
 
-
+"""
+@brief calculate a string mathematical expression and return a value like eval ( infix ) 
+@param expression is string of mathematical expression
+@return result 
+@author Martin Osvald xosval03
+"""
+def resolve(expression):
+    if ( validate(expression) != True ):
+       raise ValueError("Not valid expression")
+    return( postfixEval(infixToPostfix(expression)))
 
 
 
