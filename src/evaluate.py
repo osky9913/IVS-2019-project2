@@ -28,3 +28,75 @@ def isNumber(s):
             return False
 
     return True
+
+
+"""
+@brief changing a Math expression from infixt to Postif
+@param infixexpr Math expression string with whitespace between characters 
+@return string  as infix expression
+@author Martin Osvald xosval03
+"""
+# Solution is based on article on http://interactivepython.org/runestone/static/pythonds/BasicDS/InfixPrefixandPostfixExpressions.html
+# This solution is edit because of floating numbers and new operators
+# Also there our function for validate number
+
+def infixToPostfix(infixexpr):
+    operator = {}
+    operator["√"] = 4
+    operator["^"] = 4
+    operator["*"] = 3
+    operator["/"] = 3
+    operator["+"] = 2
+    operator["-"] = 2
+    operator["("] = 1
+    opStack = Stack()
+    postfixList = []
+    
+
+    tokenList = infixexpr.split()
+    
+#   print(tokenList)
+
+    
+    for i in range(0,len(tokenList)):
+        if tokenList[i] == '-':
+            if i == 0:
+                tokenList.insert(0,'0')
+
+            elif isNumber(tokenList[i-1]) == False and  tokenList[i-1] != ')' :
+                tokenList.insert(i,'0')
+
+            else:
+                continue
+    
+    
+    #Regex solution , doesn't work 
+    #import re
+    #tokenList=re.findall(r"[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)  +|[()+\-*√^\/]", infixexpr) nefunguje
+    #print(tokenList)
+
+    for token in tokenList:
+
+        if  ( isNumber(token) == True ):
+            
+            postfixList.append(token)
+        elif token == '(':
+            opStack.push(token)
+        elif token == ')':
+            topToken = opStack.pop()
+            while topToken != '(':
+                postfixList.append(topToken)
+                topToken = opStack.pop()
+        else:
+            while (not opStack.isEmpty()) and (operator[opStack.peek()] >= operator[token]):
+                  postfixList.append(opStack.pop())
+            opStack.push(token)
+
+    while not opStack.isEmpty():
+        postfixList.append(opStack.pop())
+
+
+    #print(" ".join(postfixList))
+    return " ".join(postfixList)
+
+
