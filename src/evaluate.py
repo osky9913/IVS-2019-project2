@@ -123,3 +123,32 @@ def doMath(op, op1, op2):
 
     else:
         return Mathlibrary.sub(op1,op2)
+
+
+
+"""
+@brief function create a Stack, adding a postif expression and then evaluate 
+@param postfixExpr  is expression in postifx , between characters there are whitespaces 
+@return result
+@author Martin Osvald xosval03
+"""
+def postfixEval(postfixExpr):
+    operandStack = Stack()
+    #operandStack.push(0)
+    tokenList = postfixExpr.split()
+
+    for token in tokenList:
+        if  ( isNumber(token) == True ):
+            operandStack.push(float(token))
+        else:
+            operand2 = operandStack.pop()
+            operand1 = operandStack.pop()
+            result = doMath(token,operand1,operand2)
+            operandStack.push(result)
+    
+    return operandStack.pop()
+
+
+
+
+
