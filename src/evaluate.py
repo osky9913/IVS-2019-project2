@@ -1,17 +1,26 @@
 #!/usr/bin/python3
 
+#VUT FIT 1BIT
+#IVS-Project2
+#Author: Martin Osvald
+#Login: xosval03
+
+# @author Martin Osvald xosval03
+
+
 
 
 from pythonds.basic.stack import Stack #pip3 install --user  pythonds
 from mathlibrary import Mathlibrary
 
 
-"""
-@brief Validate Number
-@param s String Number ( float or int ) 
-@return boolean True or False
-@author Martin Osvald xosval03
-"""
+##
+# @brief Validate Number
+#
+# @param s String Number ( float or int ) 
+#
+# @return boolean True or False
+
 def isNumber(s):
     
     
@@ -25,12 +34,13 @@ def isNumber(s):
     return True
 
 
-"""
-@brief changing a Math expression from infixt to Postif
-@param infixexpr Math expression string with whitespace between characters 
-@return string  as infix expression
-@author Martin Osvald xosval03
-"""
+##
+#@brief changing a Math expression from infixt to Postif
+#
+#@param infixexpr Math expression string with whitespace between characters 
+#
+#@return string  as infix expression
+
 # Solution is based on article on http://interactivepython.org/runestone/static/pythonds/BasicDS/InfixPrefixandPostfixExpressions.html
 # This solution is edit because of floating numbers and new operators
 # Also there our function for validate number
@@ -47,11 +57,7 @@ def infixToPostfix(infixexpr):
     opStack = Stack()
     postfixList = []
     
-
     tokenList = infixexpr.split()
-    
-    #print(tokenList)
-
     
     for i in range(0,len(tokenList)):
         if tokenList[i] == '-':
@@ -68,7 +74,7 @@ def infixToPostfix(infixexpr):
     #Regex solution , doesn't work 
     #import re
     #tokenList=re.findall(r"[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)  +|[()+\-*√^\/]", infixexpr) nefunguje
-    #print(tokenList)
+
 
     for token in tokenList:
 
@@ -91,18 +97,22 @@ def infixToPostfix(infixexpr):
         postfixList.append(opStack.pop())
 
 
-    #print(" ".join(postfixList))
+
     return " ".join(postfixList)
 
 
-"""
-@brief function for stack evaluation , it's connected with Mathlibrary
-@param op  is operator
-@param op1 is number
-@param op2 is number  
-@return result
-@author Martin Osvald xosval03
-"""
+##
+# @brief function for stack evaluation , it's connected with Mathlibrary
+#
+# @param op  is operator
+#
+# @param op1 is number
+#
+# @param op2 is number  
+#
+# @return result
+
+
 
 def doMath(op, op1, op2):
     if op == "*":
@@ -121,12 +131,13 @@ def doMath(op, op1, op2):
 
 
 
-"""
-@brief function create a Stack, adding a postif expression and then evaluate 
-@param postfixExpr  is expression in postifx , between characters there are whitespaces 
-@return result
-@author Martin Osvald xosval03
-"""
+##
+# @brief function create a Stack, adding a postif expression and then evaluate 
+#
+# @param postfixExpr  is expression in postifx , between characters there are whitespaces 
+#
+# @return result
+
 def postfixEval(postfixExpr):
     operandStack = Stack()
     #operandStack.push(0)
@@ -147,25 +158,26 @@ def postfixEval(postfixExpr):
 
 
 
-"""
-@brief checked if the mathematical expression is correct ( infix ) 
-@param expression is string of mathematical expression
-@return boolean True or false
-@author Martin Osvald xosval03
-"""
+
+##
+# @brief checked if the mathematical expression is correct ( infix ) 
+#
+# @param expression is string of mathematical expression
+#
+# @return boolean True or false
+
+
 def validate(expression):
     expression=expression.split()
-    #print(expression)
+ 
     flagNumber = False
     counterOfLeft=0
     counterOfRight=0
-    
-    
+       
     for i in expression:
-        #print(i)
+ 
         if i == '.':
             return False
-
 
         if isNumber(i)==True:
             flagNumber = True
@@ -193,12 +205,8 @@ def validate(expression):
             continue
 
 
-        
-    
-    
-
     for i in range(0,len(expression)):
-        #print(i)
+ 
         if (i == 0) and (expression[i] in "√^+*/"):
             return False
         elif (expression[i]   in "√+^-*/" ) and (expression[i-1] in "√+^-*/" )  :
@@ -227,12 +235,14 @@ def validate(expression):
     return True
 
 
-"""
-@brief calculate a string mathematical expression and return a value like eval ( infix ) 
-@param expression is string of mathematical expression
-@return result 
-@author Martin Osvald xosval03
-"""
+##
+# @brief calculate a string mathematical expression and return a value like eval ( infix ) 
+#
+# @param expression is string of mathematical expression
+#
+# @return result 
+
+
 def resolve(expression):
     if ( validate(expression) != True ):
        raise ValueError("Not valid expression")
