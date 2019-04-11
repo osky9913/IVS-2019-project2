@@ -13,19 +13,14 @@ from mathlibrary import Mathlibrary
 @author Martin Osvald xosval03
 """
 def isNumber(s):
-
-
+    
+    
     for i in s:
-        
-        if (i.count('.') > 1) :
-            return False
-        if ( i.count('.') == 1 and len(i)== 1):
-            return False
         
         if i not in "0123456789.":
             return False
-        if s[0] == '.' or s[-1] == '.':
-            return False
+        
+        
 
     return True
 
@@ -55,7 +50,7 @@ def infixToPostfix(infixexpr):
 
     tokenList = infixexpr.split()
     
-#   print(tokenList)
+    #print(tokenList)
 
     
     for i in range(0,len(tokenList)):
@@ -185,10 +180,22 @@ def validate(expression):
         elif(counterOfRight > counterOfLeft):
             return False
     
+        elif (i.count('.') > 1) :
+            return False
+
+        elif ( i.count('.') == 1 and len(s)== 1):
+            return False
+
+        elif i[0] == '.' or i[-1] == '.':
+            return False
+
         else:
             continue
-    
 
+
+        
+    
+    
 
     for i in range(0,len(expression)):
         #print(i)
@@ -215,9 +222,12 @@ def validate(expression):
     
     if( flagNumber == False):
         return False
-
     
 
     return True
+
+
+
+
 
 
