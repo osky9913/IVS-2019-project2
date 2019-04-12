@@ -70,8 +70,7 @@ class CalculatorWindow(QtWidgets.QMainWindow,Ui_Calculator):
       def factorial_pressed(self):
           self.label_write.setText(self.label_write.text() + '!')
 
-      def clean_pressed(self):
-          self.label_write.setText("")
+      def clean_pressed(self): self.label_write.setText("") 
 
       def ans_pressed(self):
           self.label_write.setText(self.label_write.text() + "ANS")
