@@ -31,7 +31,7 @@ class CalculatorWindow(QtWidgets.QMainWindow,Ui_Calculator):
 
           self.pushButton_clean.clicked.connect(self.clean_pressed)
           self.pushButton_Ans.clicked.connect(self.ans_pressed)
-
+#          self.pushButton_equals.clicked.connect(self.equals_pressed)
 
       def digit_pressed(self):
           button = self.sender()
@@ -75,3 +75,6 @@ class CalculatorWindow(QtWidgets.QMainWindow,Ui_Calculator):
 
       def ans_pressed(self):
           self.label_write.setText(self.label_write.text() + "ANS")
+
+#      def equals_pressed(self):
+#          self.label_Ans.setText(evaluate(self.label_write.text())
