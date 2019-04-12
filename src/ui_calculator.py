@@ -186,9 +186,9 @@ class Ui_Calculator(object):
 "QPushButton:pressed { background-color:#348b35; } \n"
 "")
         self.pushButton_factorial.setObjectName("pushButton_factorial")
-        self.pushButton_evaluate = QtWidgets.QPushButton(self.centralWidget)
-        self.pushButton_evaluate.setGeometry(QtCore.QRect(280, 360, 141, 71))
-        self.pushButton_evaluate.setStyleSheet("QPushButton {     color:white;\n"
+        self.pushButton_equals = QtWidgets.QPushButton(self.centralWidget)
+        self.pushButton_equals.setGeometry(QtCore.QRect(280, 360, 141, 71))
+        self.pushButton_equals.setStyleSheet("QPushButton {     color:white;\n"
 "                                    border: 1px solid  white; \n"
 "                                    background-color: #6ed427;\n"
 "                                    font-weight:900;\n"
@@ -197,7 +197,7 @@ class Ui_Calculator(object):
 "QPushButton:pressed { background-color: #54a11e; } \n"
 "\n"
 "")
-        self.pushButton_evaluate.setObjectName("pushButton_evaluate")
+        self.pushButton_equals.setObjectName("pushButton_equals")
         self.pushButton_bracketP = QtWidgets.QPushButton(self.centralWidget)
         self.pushButton_bracketP.setGeometry(QtCore.QRect(140, 80, 71, 71))
         self.pushButton_bracketP.setStyleSheet("QPushButton { color:white;background-color: #44bb46; border: 1px solid white; font-weight:900;} \n"
@@ -237,11 +237,11 @@ class Ui_Calculator(object):
         self.pushButton_help = QtWidgets.QPushButton(self.centralWidget)
         self.pushButton_help.setGeometry(QtCore.QRect(350, 80, 71, 141))
         self.pushButton_help.setObjectName("pushButton_help")
-        self.label_vysledek = QtWidgets.QLabel(self.centralWidget)
-        self.label_vysledek.setGeometry(QtCore.QRect(0, 0, 421, 41))
-        self.label_vysledek.setStyleSheet("QLabel { qproperty-alignment: \'AlignVCenter | AlignLeft\'; border: 1px solid #44bb46; color:white; background-color : #44bb46; font-weight:900; }")
-        self.label_vysledek.setText("")
-        self.label_vysledek.setObjectName("label_vysledek")
+        self.label_Ans = QtWidgets.QLabel(self.centralWidget)
+        self.label_Ans.setGeometry(QtCore.QRect(0, 0, 421, 41))
+        self.label_Ans.setStyleSheet("QLabel { qproperty-alignment: \'AlignVCenter | AlignLeft\'; border: 1px solid #44bb46; color:white; background-color : #44bb46; font-weight:900; }")
+        self.label_Ans.setText("")
+        self.label_Ans.setObjectName("label_Ans")
         self.label_write = QtWidgets.QLabel(self.centralWidget)
         self.label_write.setGeometry(QtCore.QRect(0, 40, 421, 41))
         self.label_write.setStyleSheet("QLabel { qproperty-alignment: \'AlignVCenter | AlignRight\';  border: 1px solid #8aeb46; color:white;background-color : #6ed427;\n"
@@ -272,7 +272,7 @@ class Ui_Calculator(object):
         self.pushButton_mul.setText(_translate("Calculator", " x "))
         self.pushButton_powr.setText(_translate("Calculator", "^"))
         self.pushButton_factorial.setText(_translate("Calculator", "!"))
-        self.pushButton_evaluate.setText(_translate("Calculator", "="))
+        self.pushButton_equals.setText(_translate("Calculator", "="))
         self.pushButton_bracketP.setText(_translate("Calculator", " ) "))
         self.pushButton_clean.setText(_translate("Calculator", "C"))
         self.pushButton_div.setText(_translate("Calculator", " / "))
@@ -284,3 +284,5 @@ class Ui_Calculator(object):
 ""))
         self.pushButton_help.setText(_translate("Calculator", "HELP"))
         self.label_write.setText(_translate("Calculator", ""))
+
+

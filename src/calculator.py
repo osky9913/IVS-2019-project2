@@ -30,6 +30,7 @@ class CalculatorWindow(QtWidgets.QMainWindow,Ui_Calculator):
           self.pushButton_root.clicked.connect(self.root_pressed)
 
           self.pushButton_clean.clicked.connect(self.clean_pressed)
+          self.pushButton_Ans.clicked.connect(self.ans_pressed)
 
 
       def digit_pressed(self):
@@ -71,3 +72,6 @@ class CalculatorWindow(QtWidgets.QMainWindow,Ui_Calculator):
 
       def clean_pressed(self):
           self.label_write.setText("")
+
+      def ans_pressed(self):
+          self.label_write.setText(self.label_write.text() + "ANS")
