@@ -36,34 +36,34 @@ class CalculatorWindow(QtWidgets.QMainWindow,Ui_Calculator):
           button = self.sender()
           self.label_write.setText(self.label_write.text() + button.text())
 
-      def  decimal_pressed(self):
+      def decimal_pressed(self):
           self.label_write.setText(self.label_write.text() + '.')
 
-      def  plus_pressed(self):
+      def plus_pressed(self):
           self.label_write.setText(self.label_write.text() + " " + '+' + " ")
 
-      def  minus_pressed(self):
+      def minus_pressed(self):
           self.label_write.setText(self.label_write.text() + " " + '-' + " ")
 
-      def  powr_pressed(self):
+      def powr_pressed(self):
           self.label_write.setText(self.label_write.text() + '^')
 
-      def  ln_pressed(self):
+      def ln_pressed(self):
           self.label_write.setText(self.label_write.text() + 'ln')
 
-      def  mul_pressed(self):
+      def mul_pressed(self):
           self.label_write.setText(self.label_write.text() + " " + 'x' + " ")
 
-      def  bracketL_pressed(self):
+      def bracketL_pressed(self):
           self.label_write.setText(self.label_write.text() + '(')
 
-      def  bracketP_pressed(self):
+      def bracketP_pressed(self):
           self.label_write.setText(self.label_write.text() + ')')
 
-      def  div_pressed(self):
+      def div_pressed(self):
           self.label_write.setText(self.label_write.text() + " " + '/' + " ")
 
-      def  root_pressed(self):
+      def root_pressed(self):
           self.label_write.setText(self.label_write.text() + '√')
 
       def factorial_pressed(self):
