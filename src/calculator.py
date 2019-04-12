@@ -188,6 +188,16 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
     def equals_pressed(self):
         if self.label_write.text() == "":
             return
+        try:
+            evaluate.resolve(self.label_write())
+        except:
+            self.label_Ans.setText('ERROR')
+            self.label_write.setText('')
+            self.lastCharacter = ''
+            self.lastButton = ''
+            self.decimalDot = 'false'
+            self.ans = '0'
+
         self.ans = str(evaluate.resolve(self.label_write.text()))
         self.label_Ans.setText(str(evaluate.resolve(self.label_write.text())))
         self.label_write.setText('')
