@@ -25,7 +25,7 @@ class CalculatorWindow(QtWidgets.QMainWindow,Ui_Calculator):
           self.pushButton_factorial.clicked.connect(self.factorial_pressed)
           self.pushButton_div.clicked.connect(self.div_pressed)
           self.pushButton_bracketL.clicked.connect(self.bracketL_pressed)
-          self.pushButton_bracketP.clicked.connect(self.bracketP_pressed)
+          self.pushButton_bracketR.clicked.connect(self.bracketR_pressed)
           self.pushButton_ln.clicked.connect(self.ln_pressed)
           self.pushButton_root.clicked.connect(self.root_pressed)
 
@@ -58,7 +58,7 @@ class CalculatorWindow(QtWidgets.QMainWindow,Ui_Calculator):
       def bracketL_pressed(self):
           self.label_write.setText(self.label_write.text() + '(')
 
-      def bracketP_pressed(self):
+      def bracketR_pressed(self):
           self.label_write.setText(self.label_write.text() + ')')
 
       def div_pressed(self):

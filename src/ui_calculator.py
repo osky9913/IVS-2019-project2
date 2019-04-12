@@ -198,12 +198,12 @@ class Ui_Calculator(object):
 "\n"
 "")
         self.pushButton_equals.setObjectName("pushButton_equals")
-        self.pushButton_bracketP = QtWidgets.QPushButton(self.centralWidget)
-        self.pushButton_bracketP.setGeometry(QtCore.QRect(140, 80, 71, 71))
-        self.pushButton_bracketP.setStyleSheet("QPushButton { color:white;background-color: #44bb46; border: 1px solid white; font-weight:900;} \n"
+        self.pushButton_bracketR = QtWidgets.QPushButton(self.centralWidget)
+        self.pushButton_bracketR.setGeometry(QtCore.QRect(140, 80, 71, 71))
+        self.pushButton_bracketR.setStyleSheet("QPushButton { color:white;background-color: #44bb46; border: 1px solid white; font-weight:900;} \n"
 "QPushButton:pressed { background-color:#348b35; } \n"
 "")
-        self.pushButton_bracketP.setObjectName("pushButton_bracketP")
+        self.pushButton_bracketR.setObjectName("pushButton_bracketR")
         self.pushButton_clean = QtWidgets.QPushButton(self.centralWidget)
         self.pushButton_clean.setGeometry(QtCore.QRect(0, 80, 71, 71))
         self.pushButton_clean.setStyleSheet("QPushButton { color:white;background-color: #44bb46; border: 1px solid white; font-weight:900;} \n"
@@ -273,7 +273,7 @@ class Ui_Calculator(object):
         self.pushButton_powr.setText(_translate("Calculator", "^"))
         self.pushButton_factorial.setText(_translate("Calculator", "!"))
         self.pushButton_equals.setText(_translate("Calculator", "="))
-        self.pushButton_bracketP.setText(_translate("Calculator", " ) "))
+        self.pushButton_bracketR.setText(_translate("Calculator", " ) "))
         self.pushButton_clean.setText(_translate("Calculator", "C"))
         self.pushButton_div.setText(_translate("Calculator", " / "))
         self.pushButton_bracketL.setText(_translate("Calculator", "("))
