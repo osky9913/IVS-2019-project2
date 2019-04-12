@@ -67,6 +67,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
     """
     def digit_pressed(self):
         if self.lastCharacter == ')':
+            self.label_write.setText(self.label_write.text())
             return
 
         button = self.sender()
@@ -76,52 +77,99 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
         self.lastButton = 'dig'
 
     def decimal_pressed(self):
-        if self.lastButton == 'op' or self.decimalDot == 'true':
+        if self.lastButton == 'op' or self.decimalDot == 'true' or self.lastCharacter == '':
+            self.label_write.setText(self.label_write.text())
             return
+        self.lastButton = 'op'
+        self.lastCharacter = '.'
         self.decimalDot = 'true'
         self.label_write.setText(self.label_write.text() + '.')
 
     def plus_pressed(self):
+        if self.lastButton == 'op' or self.lastCharacter == '':
+            self.label_write.setText(self.label_write.text())
+            return
+        self.lastButton = 'op'
+        self.lastCharacter = '+'
         self.decimalDot = 'false'
         self.label_write.setText(self.label_write.text() + ' + ')
 
     def minus_pressed(self):
+        if self.lastButton == 'op' or self.lastCharacter == '':
+            self.label_write.setText(self.label_write.text())
+            return
+        self.lastButton = 'op'
+        self.lastCharacter = '-'
         self.decimalDot = 'false'
         self.label_write.setText(self.label_write.text() + ' - ')
 
     def powr_pressed(self):
+        if self.lastButton == 'op' or self.lastCharacter == ' ^ ' or self.lastCharacter == '':
+            self.label_write.setText(self.label_write.text())
+            return
+        self.lastButton = 'op'
+        self.lastCharacter = '^'
         self.decimalDot = 'false'
         self.label_write.setText(self.label_write.text() + ' ^ ')
 
     # vyhodnoti aktualni vstup a vysledek posle do metody ln
     def ln_pressed(self):
+        self.lastButton = 'op'
+        self.lastCharacter = 'ln'
         self.decimalDot = 'false'
         self.label_write.setText(self.label_write.text() + 'ln')
 
     def mul_pressed(self):
+        if self.lastButton == 'op' or self.lastCharacter == '':
+            self.label_write.setText(self.label_write.text())
+            return
+        self.lastButton = 'op'
+        self.lastCharacter = ' * '
         self.decimalDot = 'false'
         self.label_write.setText(self.label_write.text() + ' * ')
 
     def bracketL_pressed(self):
+        if self.lastCharacter == '.' or self.decimalDot == 'true':
+            self.label_write.setText(self.label_write.text())
+            return
+        self.lastButton = 'op'
+        self.lastCharacter = '('
         self.decimalDot = 'false'
         self.label_write.setText(self.label_write.text() + ' ( ')
 
     def bracketR_pressed(self):
+        if self.lastCharacter == '.' or self.lastCharacter == '':
+            self.label_write.setText(self.label_write.text())
+            return
         self.lastCharacter = ')'
         self.lastButton = 'op'
         self.decimalDot = 'false'
         self.label_write.setText(self.label_write.text() + ' ) ')
 
     def div_pressed(self):
+        if self.lastButton == 'op' or self.lastCharacter == '':
+            self.label_write.setText(self.label_write.text())
+        return
+        self.lastCharacter = '/'
+        self.lastButton = 'op'
         self.decimalDot = 'false'
         self.label_write.setText(self.label_write.text() + ' / ')
 
     def root_pressed(self):
+        if self.lastCharacter == '.':
+            self.label_write.setText(self.label_write.text())
+        return
         self.decimalDot = 'false'
         self.label_write.setText(self.label_write.text() + ' √ ')
 
     # vyhodnoti aktualni vstup a vysledek posle do metody factorial
     def factorial_pressed(self):
+        if self.lastButton == 'op' or self.lastCharacter == '':
+            self.label_write.setText(self.label_write.text())
+        return
+        if self.lastCharacter == '':
+            return
+        self.lastCharacter = '!'
         self.decimalDot = 'false'
         self.label_write.setText(self.label_write.text() + '!')
 
@@ -133,7 +181,13 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
         self.ans = '0'
 
     def ans_pressed(self):
+        if self.ans == '0':
+            return
         self.label_write.setText(self.label_write.text() + " ANS ")
 
     def equals_pressed(self):
+        if self.label_write.text() == "":
+            return
+        self.ans = str(evaluate.resolve(self.label_write.text()))
         self.label_Ans.setText(str(evaluate.resolve(self.label_write.text())))
+        self.label_write.setText('')
