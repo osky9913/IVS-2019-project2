@@ -24,8 +24,8 @@ class CalculatorWindow(QtWidgets.QMainWindow,Ui_Calculator):
           self.pushButton_powr.clicked.connect(self.powr_pressed)
           self.pushButton_factorial.clicked.connect(self.factorial_pressed)
           self.pushButton_div.clicked.connect(self.div_pressed)
-          self.pushButton_zavorkaL.clicked.connect(self.zavorkaL_pressed)
-          self.pushButton_zavorkaP.clicked.connect(self.zavorkaP_pressed)
+          self.pushButton_bracketL.clicked.connect(self.bracketL_pressed)
+          self.pushButton_bracketP.clicked.connect(self.bracketP_pressed)
           self.pushButton_ln.clicked.connect(self.ln_pressed)
           self.pushButton_root.clicked.connect(self.root_pressed)
 
@@ -34,40 +34,40 @@ class CalculatorWindow(QtWidgets.QMainWindow,Ui_Calculator):
 
       def digit_pressed(self):
           button = self.sender()
-          self.label_zapis.setText(self.label_zapis.text() + button.text())
+          self.label_write.setText(self.label_write.text() + button.text())
 
       def  decimal_pressed(self):
-          self.label_zapis.setText(self.label_zapis.text() + '.')
+          self.label_write.setText(self.label_write.text() + '.')
 
       def  plus_pressed(self):
-          self.label_zapis.setText(self.label_zapis.text() + " " + '+' + " ")
+          self.label_write.setText(self.label_write.text() + " " + '+' + " ")
 
       def  minus_pressed(self):
-          self.label_zapis.setText(self.label_zapis.text() + " " + '-' + " ")
+          self.label_write.setText(self.label_write.text() + " " + '-' + " ")
 
       def  powr_pressed(self):
-          self.label_zapis.setText(self.label_zapis.text() + '^')
+          self.label_write.setText(self.label_write.text() + '^')
 
       def  ln_pressed(self):
-          self.label_zapis.setText(self.label_zapis.text() + 'ln')
+          self.label_write.setText(self.label_write.text() + 'ln')
 
       def  mul_pressed(self):
-          self.label_zapis.setText(self.label_zapis.text() + " " + 'x' + " ")
+          self.label_write.setText(self.label_write.text() + " " + 'x' + " ")
 
-      def  zavorkaL_pressed(self):
-          self.label_zapis.setText(self.label_zapis.text() + '(')
+      def  bracketL_pressed(self):
+          self.label_write.setText(self.label_write.text() + '(')
 
-      def  zavorkaP_pressed(self):
-          self.label_zapis.setText(self.label_zapis.text() + ')')
+      def  bracketP_pressed(self):
+          self.label_write.setText(self.label_write.text() + ')')
 
       def  div_pressed(self):
-          self.label_zapis.setText(self.label_zapis.text() + " " + '/' + " ")
+          self.label_write.setText(self.label_write.text() + " " + '/' + " ")
 
       def  root_pressed(self):
-          self.label_zapis.setText(self.label_zapis.text() + '√')
+          self.label_write.setText(self.label_write.text() + '√')
 
       def factorial_pressed(self):
-          self.label_zapis.setText(self.label_zapis.text() + '!')
+          self.label_write.setText(self.label_write.text() + '!')
 
       def clean_pressed(self):
-          self.label_zapis.setText("")
+          self.label_write.setText("")

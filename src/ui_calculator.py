@@ -198,12 +198,12 @@ class Ui_Calculator(object):
 "\n"
 "")
         self.pushButton_evaluate.setObjectName("pushButton_evaluate")
-        self.pushButton_zavorkaP = QtWidgets.QPushButton(self.centralWidget)
-        self.pushButton_zavorkaP.setGeometry(QtCore.QRect(140, 80, 71, 71))
-        self.pushButton_zavorkaP.setStyleSheet("QPushButton { color:white;background-color: #44bb46; border: 1px solid white; font-weight:900;} \n"
+        self.pushButton_bracketP = QtWidgets.QPushButton(self.centralWidget)
+        self.pushButton_bracketP.setGeometry(QtCore.QRect(140, 80, 71, 71))
+        self.pushButton_bracketP.setStyleSheet("QPushButton { color:white;background-color: #44bb46; border: 1px solid white; font-weight:900;} \n"
 "QPushButton:pressed { background-color:#348b35; } \n"
 "")
-        self.pushButton_zavorkaP.setObjectName("pushButton_zavorkaP")
+        self.pushButton_bracketP.setObjectName("pushButton_bracketP")
         self.pushButton_clean = QtWidgets.QPushButton(self.centralWidget)
         self.pushButton_clean.setGeometry(QtCore.QRect(0, 80, 71, 71))
         self.pushButton_clean.setStyleSheet("QPushButton { color:white;background-color: #44bb46; border: 1px solid white; font-weight:900;} \n"
@@ -216,12 +216,12 @@ class Ui_Calculator(object):
 "QPushButton:pressed { background-color:#348b35; } \n"
 "")
         self.pushButton_div.setObjectName("pushButton_div")
-        self.pushButton_zavorkaL = QtWidgets.QPushButton(self.centralWidget)
-        self.pushButton_zavorkaL.setGeometry(QtCore.QRect(70, 80, 71, 71))
-        self.pushButton_zavorkaL.setStyleSheet("QPushButton { color:white;background-color: #44bb46; border: 1px solid white; font-weight:900;} \n"
+        self.pushButton_bracketL = QtWidgets.QPushButton(self.centralWidget)
+        self.pushButton_bracketL.setGeometry(QtCore.QRect(70, 80, 71, 71))
+        self.pushButton_bracketL.setStyleSheet("QPushButton { color:white;background-color: #44bb46; border: 1px solid white; font-weight:900;} \n"
 "QPushButton:pressed { background-color:#348b35; } \n"
 "")
-        self.pushButton_zavorkaL.setObjectName("pushButton_zavorkaL")
+        self.pushButton_bracketL.setObjectName("pushButton_bracketL")
         self.pushButton_ln = QtWidgets.QPushButton(self.centralWidget)
         self.pushButton_ln.setGeometry(QtCore.QRect(280, 150, 71, 71))
         self.pushButton_ln.setStyleSheet("QPushButton { color:white;background-color: #44bb46; border: 1px solid white; font-weight:900;} \n"
@@ -242,11 +242,11 @@ class Ui_Calculator(object):
         self.label_vysledek.setStyleSheet("QLabel { qproperty-alignment: \'AlignVCenter | AlignLeft\'; border: 1px solid #44bb46; color:white; background-color : #44bb46; font-weight:900; }")
         self.label_vysledek.setText("")
         self.label_vysledek.setObjectName("label_vysledek")
-        self.label_zapis = QtWidgets.QLabel(self.centralWidget)
-        self.label_zapis.setGeometry(QtCore.QRect(0, 40, 421, 41))
-        self.label_zapis.setStyleSheet("QLabel { qproperty-alignment: \'AlignVCenter | AlignRight\';  border: 1px solid #8aeb46; color:white;background-color : #6ed427;\n"
+        self.label_write = QtWidgets.QLabel(self.centralWidget)
+        self.label_write.setGeometry(QtCore.QRect(0, 40, 421, 41))
+        self.label_write.setStyleSheet("QLabel { qproperty-alignment: \'AlignVCenter | AlignRight\';  border: 1px solid #8aeb46; color:white;background-color : #6ed427;\n"
 "font-weight:900; }")
-        self.label_zapis.setObjectName("label_zapis")
+        self.label_write.setObjectName("label_write")
         Calculator.setCentralWidget(self.centralWidget)
 
         self.retranslateUi(Calculator)
@@ -273,16 +273,14 @@ class Ui_Calculator(object):
         self.pushButton_powr.setText(_translate("Calculator", "^"))
         self.pushButton_factorial.setText(_translate("Calculator", "!"))
         self.pushButton_evaluate.setText(_translate("Calculator", "="))
-        self.pushButton_zavorkaP.setText(_translate("Calculator", " ) "))
+        self.pushButton_bracketP.setText(_translate("Calculator", " ) "))
         self.pushButton_clean.setText(_translate("Calculator", "C"))
         self.pushButton_div.setText(_translate("Calculator", " / "))
-        self.pushButton_zavorkaL.setText(_translate("Calculator", "("))
+        self.pushButton_bracketL.setText(_translate("Calculator", "("))
         self.pushButton_ln.setText(_translate("Calculator", "ln"))
         self.pushButton_root.setText(_translate("Calculator", "√"))
         self.pushButton_help.setStyleSheet(_translate("Calculator", "QPushButton { color:white;background-color: #44bb46; border: 1px solid white; font-weight:900;} \n"
 "QPushButton:pressed { background-color:#348b35; } \n"
 ""))
         self.pushButton_help.setText(_translate("Calculator", "HELP"))
-        self.label_zapis.setText(_translate("Calculator", ""))
-
-
+        self.label_write.setText(_translate("Calculator", ""))
