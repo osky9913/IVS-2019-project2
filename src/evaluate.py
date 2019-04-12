@@ -149,7 +149,12 @@ def postfixEval(postfixExpr):
         else:
             operand2 = operandStack.pop()
             operand1 = operandStack.pop()
+            try:
+                doMath(token,operand1,operand2)
+            except:
+                return "Bad numeric operation"
             result = doMath(token,operand1,operand2)
+            
             operandStack.push(result)
     
     return operandStack.pop()
