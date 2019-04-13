@@ -149,7 +149,12 @@ def postfixEval(postfixExpr):
         else:
             operand2 = operandStack.pop()
             operand1 = operandStack.pop()
+            try:
+                doMath(token,operand1,operand2)
+            except:
+                raise ValueError("Not valid expression")
             result = doMath(token,operand1,operand2)
+            
             operandStack.push(result)
     
     return operandStack.pop()
@@ -247,6 +252,9 @@ def resolve(expression):
     if ( validate(expression) != True ):
        raise ValueError("Not valid expression")
     return( postfixEval(infixToPostfix(expression)))
+
+
+print(resolve(" 5 / 0 "))
 
 
 
