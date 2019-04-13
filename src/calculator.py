@@ -1,6 +1,7 @@
 from PyQt5 import QtWidgets
 from ui_calculator import Ui_Calculator
 import evaluate
+from mathlibrary import Mathlibrary
 
 class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
     
@@ -66,7 +67,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
 
     """
     def digit_pressed(self):
-        if self.lastCharacter == ')':
+        if self.lastCharacter == ')' or self.lastCharacter == 'a':
             self.label_write.setText(self.label_write.text())
             return
 
@@ -162,34 +163,24 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
         self.decimalDot = 'false'
         self.label_write.setText(self.label_write.text() + ' √ ')
 
-    # vyhodnoti aktualni vstup a vysledek posle do metody factorial
     def factorial_pressed(self):
-        if self.lastButton == 'op' or self.lastCharacter == '':
-            self.label_write.setText(self.label_write.text())
-        return
-        if self.lastCharacter == '':
+        self.equals_pressed()
+        if self.label_Ans == 'ERROR':
             return
-        self.lastCharacter = '!'
-        self.decimalDot = 'false'
-        self.label_write.setText(self.label_write.text() + '!')
 
-    def clean_pressed(self):
-        self.label_write.setText("") 
-        self.lastCharacter = ''
-        self.lastButton = ''
-        self.decimalDot = 'false'
-        self.ans = '0'
-
-    def ans_pressed(self):
-        if self.ans == '0':
-            return
-        self.label_write.setText(self.label_write.text() + " ANS ")
-
-    def equals_pressed(self):
-        if self.label_write.text() == "":
-            return
+        if self.ans[-1] != '0' or self.ans[-2] !=  '.':
+            self.label_Ans.setText('ERROR')
+            self.label_write.setText('')
+            self.lastCharacter = ''
+            self.lastButton = ''
+            self.decimalDot = 'false'
+            self.ans = '0'
+        else:
+            self.ans = self.ans.strip('.0')
+            self.label_Ans.setText(self.ans)
+        
         try:
-            evaluate.resolve(self.label_write())
+            self.ans = str(Mathlibrary.factorial(int(self.label_Ans.text())))
         except:
             self.label_Ans.setText('ERROR')
             self.label_write.setText('')
@@ -197,7 +188,49 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
             self.lastButton = ''
             self.decimalDot = 'false'
             self.ans = '0'
+            return
 
-        self.ans = str(evaluate.resolve(self.label_write.text()))
-        self.label_Ans.setText(str(evaluate.resolve(self.label_write.text())))
+        self.label_Ans.setText(self.ans)
+        self.label_write.setText('')
+
+
+    def clean_pressed(self):
+        self.label_write.setText("") 
+        self.label_Ans.setText("") 
+        self.lastCharacter = ''
+        self.lastButton = ''
+        self.decimalDot = 'false'
+        self.ans = '0'
+
+    def ans_pressed(self):
+        if self.lastButton == 'dig' or self.lastCharacter == '.':
+            return
+        self.label_write.setText(self.label_write.text() + "ANS")
+        self.lastButton = 'dig'
+        self.lastCharacter = 'a'
+
+
+    def equals_pressed(self):
+        if self.label_write.text() == "":
+            self.label_Ans.setText('0')
+            return
+
+        # takes care of the substitution of self.ans for its actual value
+        if 'ANS' in self.label_write.text():
+            if '-' in self.ans:
+                self.ans = self.ans[:1] + ' ' + self.ans[1:]
+            self.label_write.setText(self.label_write.text().replace("ANS", self.ans))
+
+        try:
+            self.ans = str(evaluate.resolve(self.label_write.text()))
+        except:
+            self.label_Ans.setText('ERROR')
+            self.label_write.setText('')
+            self.lastCharacter = ''
+            self.lastButton = ''
+            self.decimalDot = 'false'
+            self.ans = '0'
+            return
+
+        self.label_Ans.setText(self.ans)
         self.label_write.setText('')
