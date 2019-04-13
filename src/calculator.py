@@ -1,9 +1,9 @@
 from PyQt5 import QtWidgets
-from ui_calculator import Ui_Calculator
+from ui_calculator import CalculatorUi
 import evaluate
 from mathlibrary import Mathlibrary
 
-class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
+class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
     
     ##
     # @brief Stores the value of the last evaluated expression
@@ -33,204 +33,199 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
         super().__init__()
         self.setupUi(self)
         self.show()
-        self.pushButton_0.clicked.connect(self.digit_pressed)
-        self.pushButton_1.clicked.connect(self.digit_pressed)
-        self.pushButton_2.clicked.connect(self.digit_pressed)
-        self.pushButton_3.clicked.connect(self.digit_pressed)
-        self.pushButton_4.clicked.connect(self.digit_pressed)
-        self.pushButton_5.clicked.connect(self.digit_pressed)
-        self.pushButton_6.clicked.connect(self.digit_pressed)
-        self.pushButton_7.clicked.connect(self.digit_pressed)
-        self.pushButton_8.clicked.connect(self.digit_pressed)
-        self.pushButton_9.clicked.connect(self.digit_pressed)
+        self.pushButton_0.clicked.connect(self.digitPressed)
+        self.pushButton_1.clicked.connect(self.digitPressed)
+        self.pushButton_2.clicked.connect(self.digitPressed)
+        self.pushButton_3.clicked.connect(self.digitPressed)
+        self.pushButton_4.clicked.connect(self.digitPressed)
+        self.pushButton_5.clicked.connect(self.digitPressed)
+        self.pushButton_6.clicked.connect(self.digitPressed)
+        self.pushButton_7.clicked.connect(self.digitPressed)
+        self.pushButton_8.clicked.connect(self.digitPressed)
+        self.pushButton_9.clicked.connect(self.digitPressed)
 
-        self.pushButton_decimal.clicked.connect(self.decimal_pressed)
-        self.pushButton_plus.clicked.connect(self.plus_pressed)
-        self.pushButton_minus.clicked.connect(self.minus_pressed)
-        self.pushButton_mul.clicked.connect(self.mul_pressed)
-        self.pushButton_powr.clicked.connect(self.powr_pressed)
-        self.pushButton_factorial.clicked.connect(self.factorial_pressed)
-        self.pushButton_div.clicked.connect(self.div_pressed)
-        self.pushButton_bracketL.clicked.connect(self.bracketL_pressed)
-        self.pushButton_bracketR.clicked.connect(self.bracketR_pressed)
-        self.pushButton_ln.clicked.connect(self.ln_pressed)
-        self.pushButton_root.clicked.connect(self.root_pressed)
+        self.pushButton_decimal.clicked.connect(self.decimalPressed)
+        self.pushButton_plus.clicked.connect(self.plusPressed)
+        self.pushButton_minus.clicked.connect(self.minusPressed)
+        self.pushButton_mul.clicked.connect(self.mulPressed)
+        self.pushButton_powr.clicked.connect(self.powerPressed)
+        self.pushButton_factorial.clicked.connect(self.factorialPressed)
+        self.pushButton_div.clicked.connect(self.divPressed)
+        self.pushButton_bracketL.clicked.connect(self.bracketLeftPressed)
+        self.pushButton_bracketR.clicked.connect(self.bracketRightPressed)
+        self.pushButton_ln.clicked.connect(self.lnPressed)
+        self.pushButton_root.clicked.connect(self.rootPressed)
 
-        self.pushButton_clean.clicked.connect(self.clean_pressed)
-        self.pushButton_Ans.clicked.connect(self.ans_pressed)
-        self.pushButton_equals.clicked.connect(self.equals_pressed)
+        self.pushButton_clean.clicked.connect(self.cleanPressed)
+        self.pushButton_ans.clicked.connect(self.ansPressed)
+        self.pushButton_equals.clicked.connect(self.equalsPressed)
 
-    """
-    zkontroluje, podminku, zda je mozne psat cislo
-    zapise ho
-    nastavi lastCharacter a lastButton
 
-    """
-    def digit_pressed(self):
+    def digitPressed(self):
         if self.lastCharacter == ')' or self.lastCharacter == 'a':
-            self.label_write.setText(self.label_write.text())
+            self.labelWrite.setText(self.labelWrite.text())
             return
 
         button = self.sender()
-        self.label_write.setText(self.label_write.text() + button.text())
+        self.labelWrite.setText(self.labelWrite.text() + button.text())
 
         self.lastCharacter = button.text()
         self.lastButton = 'dig'
 
-    def decimal_pressed(self):
+    def decimalPressed(self):
         if self.lastButton == 'op' or self.decimalDot == 'true' or self.lastCharacter == '':
-            self.label_write.setText(self.label_write.text())
+            self.labelWrite.setText(self.labelWrite.text())
             return
         self.lastButton = 'op'
         self.lastCharacter = '.'
         self.decimalDot = 'true'
-        self.label_write.setText(self.label_write.text() + '.')
+        self.labelWrite.setText(self.labelWrite.text() + '.')
 
-    def plus_pressed(self):
+    def plusPressed(self):
         if self.lastButton == 'op' or self.lastCharacter == '':
-            self.label_write.setText(self.label_write.text())
+            self.labelWrite.setText(self.labelWrite.text())
             return
         self.lastButton = 'op'
         self.lastCharacter = '+'
         self.decimalDot = 'false'
-        self.label_write.setText(self.label_write.text() + ' + ')
+        self.labelWrite.setText(self.labelWrite.text() + ' + ')
 
-    def minus_pressed(self):
+    def minusPressed(self):
         if self.lastButton == 'op' or self.lastCharacter == '':
-            self.label_write.setText(self.label_write.text())
+            self.labelWrite.setText(self.labelWrite.text())
             return
         self.lastButton = 'op'
         self.lastCharacter = '-'
         self.decimalDot = 'false'
-        self.label_write.setText(self.label_write.text() + ' - ')
+        self.labelWrite.setText(self.labelWrite.text() + ' - ')
 
-    def powr_pressed(self):
+    def powerPressed(self):
         if self.lastButton == 'op' or self.lastCharacter == ' ^ ' or self.lastCharacter == '':
-            self.label_write.setText(self.label_write.text())
+            self.labelWrite.setText(self.labelWrite.text())
             return
         self.lastButton = 'op'
         self.lastCharacter = '^'
         self.decimalDot = 'false'
-        self.label_write.setText(self.label_write.text() + ' ^ ')
+        self.labelWrite.setText(self.labelWrite.text() + ' ^ ')
 
     # vyhodnoti aktualni vstup a vysledek posle do metody ln
-    def ln_pressed(self):
+    def lnPressed(self):
         self.lastButton = 'op'
         self.lastCharacter = 'ln'
         self.decimalDot = 'false'
-        self.label_write.setText(self.label_write.text() + 'ln')
+        self.labelWrite.setText(self.labelWrite.text() + 'ln')
 
-    def mul_pressed(self):
+    def mulPressed(self):
         if self.lastButton == 'op' or self.lastCharacter == '':
-            self.label_write.setText(self.label_write.text())
+            self.labelWrite.setText(self.labelWrite.text())
             return
         self.lastButton = 'op'
         self.lastCharacter = ' * '
         self.decimalDot = 'false'
-        self.label_write.setText(self.label_write.text() + ' * ')
+        self.labelWrite.setText(self.labelWrite.text() + ' * ')
 
-    def bracketL_pressed(self):
+    def bracketLeftPressed(self):
         if self.lastCharacter == '.' or self.decimalDot == 'true':
-            self.label_write.setText(self.label_write.text())
+            self.labelWrite.setText(self.labelWrite.text())
             return
         self.lastButton = 'op'
         self.lastCharacter = '('
         self.decimalDot = 'false'
-        self.label_write.setText(self.label_write.text() + ' ( ')
+        self.labelWrite.setText(self.labelWrite.text() + ' ( ')
 
-    def bracketR_pressed(self):
+    def bracketRightPressed(self):
         if self.lastCharacter == '.' or self.lastCharacter == '':
-            self.label_write.setText(self.label_write.text())
+            self.labelWrite.setText(self.labelWrite.text())
             return
         self.lastCharacter = ')'
         self.lastButton = 'op'
         self.decimalDot = 'false'
-        self.label_write.setText(self.label_write.text() + ' ) ')
+        self.labelWrite.setText(self.labelWrite.text() + ' ) ')
 
-    def div_pressed(self):
+    def divPressed(self):
         if self.lastButton == 'op' or self.lastCharacter == '':
-            self.label_write.setText(self.label_write.text())
+            self.labelWrite.setText(self.labelWrite.text())
         return
         self.lastCharacter = '/'
         self.lastButton = 'op'
         self.decimalDot = 'false'
-        self.label_write.setText(self.label_write.text() + ' / ')
+        self.labelWrite.setText(self.labelWrite.text() + ' / ')
 
-    def root_pressed(self):
+    def rootPressed(self):
         if self.lastCharacter == '.':
-            self.label_write.setText(self.label_write.text())
+            self.labelWrite.setText(self.labelWrite.text())
         return
         self.decimalDot = 'false'
-        self.label_write.setText(self.label_write.text() + ' √ ')
+        self.labelWrite.setText(self.labelWrite.text() + ' √ ')
 
-    def factorial_pressed(self):
-        self.equals_pressed()
-        if self.label_Ans == 'ERROR':
+    def factorialPressed(self):
+        self.equalsPressed()
+        if self.labelAns == 'ERROR':
             return
 
         if self.ans[-1] != '0' or self.ans[-2] !=  '.':
-            self.label_Ans.setText('ERROR')
-            self.label_write.setText('')
+            self.labelAns.setText('ERROR')
+            self.labelWrite.setText('')
             self.lastCharacter = ''
             self.lastButton = ''
             self.decimalDot = 'false'
             self.ans = '0'
         else:
             self.ans = self.ans.strip('.0')
-            self.label_Ans.setText(self.ans)
+            self.labelAns.setText(self.ans)
         
         try:
-            self.ans = str(Mathlibrary.factorial(int(self.label_Ans.text())))
+            self.ans = str(Mathlibrary.factorial(int(self.labelAns.text())))
         except:
-            self.label_Ans.setText('ERROR')
-            self.label_write.setText('')
+            self.labelAns.setText('ERROR')
+            self.labelWrite.setText('')
             self.lastCharacter = ''
             self.lastButton = ''
             self.decimalDot = 'false'
             self.ans = '0'
             return
 
-        self.label_Ans.setText(self.ans)
-        self.label_write.setText('')
+        self.labelAns.setText(self.ans)
+        self.labelWrite.setText('')
 
 
-    def clean_pressed(self):
-        self.label_write.setText("") 
-        self.label_Ans.setText("") 
+    def cleanPressed(self):
+        self.labelWrite.setText("") 
+        self.labelAns.setText("") 
         self.lastCharacter = ''
         self.lastButton = ''
         self.decimalDot = 'false'
         self.ans = '0'
 
-    def ans_pressed(self):
+    def ansPressed(self):
         if self.lastButton == 'dig' or self.lastCharacter == '.':
             return
-        self.label_write.setText(self.label_write.text() + "ANS")
+        self.labelWrite.setText(self.labelWrite.text() + "ANS")
         self.lastButton = 'dig'
         self.lastCharacter = 'a'
 
 
-    def equals_pressed(self):
-        if self.label_write.text() == "":
-            self.label_Ans.setText('0')
+    def equalsPressed(self):
+        if self.labelWrite.text() == "":
+            self.labelAns.setText('0')
             return
 
         # takes care of the substitution of self.ans for its actual value
-        if 'ANS' in self.label_write.text():
+        if 'ANS' in self.labelWrite.text():
             if '-' in self.ans:
                 self.ans = self.ans[:1] + ' ' + self.ans[1:]
-            self.label_write.setText(self.label_write.text().replace("ANS", self.ans))
+            self.labelWrite.setText(self.labelWrite.text().replace("ANS", self.ans))
 
         try:
-            self.ans = str(evaluate.resolve(self.label_write.text()))
+            self.ans = str(evaluate.resolve(self.labelWrite.text()))
         except:
-            self.label_Ans.setText('ERROR')
-            self.label_write.setText('')
+            self.labelAns.setText('ERROR')
+            self.labelWrite.setText('')
             self.lastCharacter = ''
             self.lastButton = ''
             self.decimalDot = 'false'
             self.ans = '0'
             return
 
-        self.label_Ans.setText(self.ans)
-        self.label_write.setText('')
+        self.labelAns.setText(self.ans)
+        self.labelWrite.setText('')

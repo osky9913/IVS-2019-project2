@@ -9,7 +9,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Calculator(object):
+class CalculatorUi(object):
     def setupUi(self, Calculator):
         Calculator.setObjectName("Calculator")
         Calculator.resize(421, 431)
@@ -75,9 +75,9 @@ class Ui_Calculator(object):
 "\n"
 "")
         self.pushButton_2.setObjectName("pushButton_2")
-        self.pushButton_Ans = QtWidgets.QPushButton(self.centralWidget)
-        self.pushButton_Ans.setGeometry(QtCore.QRect(280, 290, 141, 71))
-        self.pushButton_Ans.setStyleSheet("QPushButton {     color:white;\n"
+        self.pushButton_ans = QtWidgets.QPushButton(self.centralWidget)
+        self.pushButton_ans.setGeometry(QtCore.QRect(280, 290, 141, 71))
+        self.pushButton_ans.setStyleSheet("QPushButton {     color:white;\n"
 "                                    border: 1px solid  white; \n"
 "                                    background-color: #6ed427;\n"
 "                                    font-weight:900;\n"
@@ -86,7 +86,7 @@ class Ui_Calculator(object):
 "QPushButton:pressed { background-color: #54a11e; } \n"
 "\n"
 "")
-        self.pushButton_Ans.setObjectName("pushButton_Ans")
+        self.pushButton_ans.setObjectName("pushButton_ans")
         self.pushButton_decimal = QtWidgets.QPushButton(self.centralWidget)
         self.pushButton_decimal.setGeometry(QtCore.QRect(140, 360, 71, 71))
         self.pushButton_decimal.setStyleSheet("QPushButton { color:white;background-color: #44bb46; border: 1px solid white; font-weight:900;} \n"
@@ -237,16 +237,16 @@ class Ui_Calculator(object):
         self.pushButton_help = QtWidgets.QPushButton(self.centralWidget)
         self.pushButton_help.setGeometry(QtCore.QRect(350, 80, 71, 141))
         self.pushButton_help.setObjectName("pushButton_help")
-        self.label_Ans = QtWidgets.QLabel(self.centralWidget)
-        self.label_Ans.setGeometry(QtCore.QRect(0, 0, 421, 41))
-        self.label_Ans.setStyleSheet("QLabel { qproperty-alignment: \'AlignVCenter | AlignLeft\'; border: 1px solid #44bb46; color:white; background-color : #44bb46; font-weight:900; }")
-        self.label_Ans.setText("")
-        self.label_Ans.setObjectName("label_Ans")
-        self.label_write = QtWidgets.QLabel(self.centralWidget)
-        self.label_write.setGeometry(QtCore.QRect(0, 40, 421, 41))
-        self.label_write.setStyleSheet("QLabel { qproperty-alignment: \'AlignVCenter | AlignRight\';  border: 1px solid #8aeb46; color:white;background-color : #6ed427;\n"
+        self.labelAns = QtWidgets.QLabel(self.centralWidget)
+        self.labelAns.setGeometry(QtCore.QRect(0, 0, 421, 41))
+        self.labelAns.setStyleSheet("QLabel { qproperty-alignment: \'AlignVCenter | AlignLeft\'; border: 1px solid #44bb46; color:white; background-color : #44bb46; font-weight:900; }")
+        self.labelAns.setText("")
+        self.labelAns.setObjectName("labelAns")
+        self.labelWrite = QtWidgets.QLabel(self.centralWidget)
+        self.labelWrite.setGeometry(QtCore.QRect(0, 40, 421, 41))
+        self.labelWrite.setStyleSheet("QLabel { qproperty-alignment: \'AlignVCenter | AlignRight\';  border: 1px solid #8aeb46; color:white;background-color : #6ed427;\n"
 "font-weight:900; }")
-        self.label_write.setObjectName("label_write")
+        self.labelWrite.setObjectName("labelWrite")
         Calculator.setCentralWidget(self.centralWidget)
 
         self.retranslateUi(Calculator)
@@ -260,7 +260,7 @@ class Ui_Calculator(object):
         self.pushButton_0.setText(_translate("Calculator", "0"))
         self.pushButton_1.setText(_translate("Calculator", "1"))
         self.pushButton_2.setText(_translate("Calculator", "2"))
-        self.pushButton_Ans.setText(_translate("Calculator", "Ans"))
+        self.pushButton_ans.setText(_translate("Calculator", "Ans"))
         self.pushButton_decimal.setText(_translate("Calculator", "."))
         self.pushButton_plus.setText(_translate("Calculator", " + "))
         self.pushButton_3.setText(_translate("Calculator", "3"))
@@ -283,6 +283,6 @@ class Ui_Calculator(object):
 "QPushButton:pressed { background-color:#348b35; } \n"
 ""))
         self.pushButton_help.setText(_translate("Calculator", "HELP"))
-        self.label_write.setText(_translate("Calculator", ""))
+        self.labelWrite.setText(_translate("Calculator", ""))
 
 
