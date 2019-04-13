@@ -26,7 +26,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
     # @brief Indicates whether there has already been a decimal point written
     # within a given number
     #
-    decimalDot = 'false'
+    decimalDot = False
 
 
     def __init__(self):
@@ -73,11 +73,11 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.lastButton = 'dig'
 
     def decimalPressed(self):
-        if self.lastButton == 'op' or self.decimalDot == 'true' or self.lastCharacter == '':
+        if self.lastButton == 'op' or self.decimalDot == True or self.lastCharacter == '':
             return
 
         self.labelWrite.setText(self.labelWrite.text() + '.')
-        self.decimalDot = 'true'
+        self.decimalDot = True
         self.lastCharacter = '.'
         self.lastButton = 'op'
 
@@ -86,7 +86,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
             return
 
         self.labelWrite.setText(self.labelWrite.text() + ' + ')
-        self.decimalDot = 'false'
+        self.decimalDot = False
         self.lastCharacter = '+'
         self.lastButton = 'op'
 
@@ -95,7 +95,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
             return
 
         self.labelWrite.setText(self.labelWrite.text() + ' - ')
-        self.decimalDot = 'false'
+        self.decimalDot = False
         self.lastCharacter = '-'
         self.lastButton = 'op'
 
@@ -104,24 +104,38 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
             return
 
         self.labelWrite.setText(self.labelWrite.text() + ' ^ ')
-        self.decimalDot = 'false'
+        self.decimalDot = False
         self.lastCharacter = '^'
         self.lastButton = 'op'
 
-    # vyhodnoti aktualni vstup a vysledek posle do metody ln
-    # TODO
     def lnPressed(self):
-        self.lastButton = 'op'
-        self.lastCharacter = 'ln'
-        self.decimalDot = 'false'
-        self.labelWrite.setText(self.labelWrite.text() + 'ln')
+        self.equalsPressed()
+        if self.labelAns == 'ERROR':
+            return
+
+        try:
+            self.ans = str(Mathlibrary.ln(float(self.labelAns.text())))
+        except:
+            self.labelAns.setText('ERROR')
+            self.labelWrite.setText('')
+            self.lastCharacter = ''
+            self.lastButton = ''
+            self.decimalDot = False
+            self.ans = '0'
+            return
+
+        self.labelAns.setText(self.ans)
+        self.labelWrite.setText('')
+        self.lastCharacter = ''
+        self.lastButton = 'dig'
+        self.decimalDot = False
 
     def mulPressed(self):
         if self.lastButton == 'op' and self.lastCharacter != ')':
             return
 
         self.labelWrite.setText(self.labelWrite.text() + ' * ')
-        self.decimalDot = 'false'
+        self.decimalDot = False
         self.lastCharacter = '*'
         self.lastButton = 'op'
 
@@ -130,7 +144,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
             return
 
         self.labelWrite.setText(self.labelWrite.text() + ' ( ')
-        self.decimalDot = 'false'
+        self.decimalDot = False
         self.lastCharacter = '('
         self.lastButton = 'op'
 
@@ -139,7 +153,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
             return
 
         self.labelWrite.setText(self.labelWrite.text() + ' ) ')
-        self.decimalDot = 'false'
+        self.decimalDot = False
         self.lastCharacter = ')'
         self.lastButton = 'op'
 
@@ -148,7 +162,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
             return
 
         self.labelWrite.setText(self.labelWrite.text() + ' / ')
-        self.decimalDot = 'false'
+        self.decimalDot = False
         self.lastCharacter = '/'
         self.lastButton = 'op'
 
@@ -157,7 +171,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
             return 
 
         self.labelWrite.setText(self.labelWrite.text() + ' √ ')
-        self.decimalDot = 'false'
+        self.decimalDot = False
         self.lastCharacter = '√'
         self.lastButton = 'op'
 
@@ -171,17 +185,16 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
             self.labelWrite.setText('')
             self.lastCharacter = ''
             self.lastButton = ''
-            self.decimalDot = 'false'
+            self.decimalDot = False
             self.ans = '1'
             return
-
 
         if self.ans[-1] != '0' or self.ans[-2] !=  '.':
             self.labelAns.setText('ERROR')
             self.labelWrite.setText('')
             self.lastCharacter = ''
             self.lastButton = ''
-            self.decimalDot = 'false'
+            self.decimalDot = False
             self.ans = '0'
         else:
             self.ans = self.ans.strip('.0')
@@ -194,36 +207,48 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
             self.labelWrite.setText('')
             self.lastCharacter = ''
             self.lastButton = ''
-            self.decimalDot = 'false'
+            self.decimalDot = False
             self.ans = '0'
             return
 
         self.labelAns.setText(self.ans)
         self.labelWrite.setText('')
-
+        self.lastCharacter = ''
+        self.lastButton = 'dig'
+        self.decimalDot = False
 
     def cleanPressed(self):
         self.labelWrite.setText("") 
         self.labelAns.setText("") 
         self.lastCharacter = ''
         self.lastButton = 'dig'
-        self.decimalDot = 'false'
+        self.decimalDot = False
         self.ans = '0'
 
     def ansPressed(self):
-        if self.lastButton == 'dig' \
-                or self.lastCharacter == '.' \
+        if (self.lastButton == 'dig' \
+                or self.lastCharacter == '.') \
                 and self.labelWrite.text() != '':
             return
         self.labelWrite.setText(self.labelWrite.text() + "ANS")
         self.lastButton = 'dig'
         self.lastCharacter = 'a'
-
+        self.decimalDot = True
 
     def equalsPressed(self):
         if self.labelWrite.text() == "":
-            self.labelAns.setText('0')
+            self.labelWrite.setText('')
+            self.decimalDot = False
+            self.lastButton = 'dig'
+            self.lastCharacter = ''
+            self.ans = self.labelAns.text()
             return
+
+        # takes care of the substitution of self.ans for its actual value
+        if 'ANS' in self.labelWrite.text():
+            if '-' in self.ans:
+                self.ans = ' ( ' + self.ans[:1] + ' ' + self.ans[1:] + ' ) '
+            self.labelWrite.setText(self.labelWrite.text().replace('ANS', self.ans))
 
         # creates the possibility to use previous result without explicitly
         # specifying it
@@ -233,12 +258,6 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
                     self.ans = ' ( ' + self.ans[:1] + ' ' + self.ans[1:] + ' ) '
                 self.labelWrite.setText(self.ans + self.labelWrite.text())
 
-        # takes care of the substitution of self.ans for its actual value
-        if 'ANS' in self.labelWrite.text():
-            if '-' in self.ans:
-                self.ans = ' ( ' + self.ans[:1] + ' ' + self.ans[1:] + ' ) '
-            self.labelWrite.setText(self.labelWrite.text().replace("ANS", self.ans))
-
         try:
             self.ans = str(evaluate.resolve(self.labelWrite.text()))
         except:
@@ -246,12 +265,12 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
             self.labelWrite.setText('')
             self.lastCharacter = ''
             self.lastButton = 'dig'
-            self.decimalDot = 'false'
+            self.decimalDot = False
             self.ans = '0'
             return
 
         self.labelAns.setText(self.ans)
         self.labelWrite.setText('')
-        self.decimalDot = 'false'
+        self.decimalDot = False
         self.lastButton = 'dig'
         self.lastCharacter = ''
