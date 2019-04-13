@@ -59,6 +59,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.pushButton_clean.clicked.connect(self.cleanPressed)
         self.pushButton_ans.clicked.connect(self.ansPressed)
         self.pushButton_equals.clicked.connect(self.equalsPressed)
+        self.labelAns.setText('0.0')
 
 
     def digitPressed(self):
@@ -177,19 +178,11 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
 
     def factorialPressed(self):
         self.equalsPressed()
-        if self.labelAns == 'ERROR':
+        if self.labelAns.text() == 'ERROR':
             return
 
-        if self.ans == '0':
-            self.labelAns.setText('1.0')
-            self.labelWrite.setText('')
-            self.lastCharacter = ''
-            self.lastButton = ''
-            self.decimalDot = False
-            self.ans = '1'
-            return
-
-        if self.ans[-1] != '0' or self.ans[-2] !=  '.':
+        
+        if int(float(self.labelAns.text())) - float(self.labelAns.text()) != 0:
             self.labelAns.setText('ERROR')
             self.labelWrite.setText('')
             self.lastCharacter = ''
@@ -197,8 +190,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
             self.decimalDot = False
             self.ans = '0'
         else:
-            self.ans = self.ans.strip('.0')
-            self.labelAns.setText(self.ans)
+            self.labelAns.setText(str(int(float(self.labelAns.text()))))
         
         try:
             self.ans = str(Mathlibrary.factorial(int(self.labelAns.text())))
@@ -218,8 +210,8 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.decimalDot = False
 
     def cleanPressed(self):
-        self.labelWrite.setText("") 
-        self.labelAns.setText("") 
+        self.labelWrite.setText('') 
+        self.labelAns.setText('0.0') 
         self.lastCharacter = ''
         self.lastButton = 'dig'
         self.decimalDot = False
