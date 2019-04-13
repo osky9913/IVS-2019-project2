@@ -254,7 +254,6 @@ def resolve(expression):
     return( postfixEval(infixToPostfix(expression)))
 
 
-print(resolve(" 5 / 0 "))
 
 
 
