@@ -28,5 +28,6 @@
 *.out
 *.app
 
-# Python metadata
+# Python and ide metadata
 __pycache__/
+.idea/
