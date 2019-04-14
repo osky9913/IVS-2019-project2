@@ -8,6 +8,7 @@
 
 from PyQt5 import QtWidgets
 from ui_calculator import CalculatorUi
+import math
 import evaluate
 from mathlibrary import Mathlibrary
 
@@ -240,6 +241,9 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
     def factorialPressed(self):
         self.equalsPressed()
         if self.labelAns.text() == 'ERROR':
+            return
+        if math.isinf(float(self.labelAns.text())):
+            self.labelAns.setText('infinity')
             return
         
         # Checks if the result is a whole number and if so, trims the decimal part
