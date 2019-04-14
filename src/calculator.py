@@ -14,7 +14,6 @@ from mathlibrary import Mathlibrary
 
 
 class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
-    
     ##
     # @brief Stores the value of the last evaluated expression
     #
@@ -37,7 +36,6 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
     # within a given number
     #
     decimalPoint = False
-
 
     def __init__(self):
         super().__init__()
@@ -71,8 +69,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.pushButton_equals.clicked.connect(self.equalsPressed)
         self.labelAns.setText('0')
 
-
-    ## 
+    ##
     # @brief Inserts a particular digit into the input string
     # 
     def digitPressed(self):
@@ -86,14 +83,13 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.lastCharacter = button.text()
         self.lastButton = 'dig'
 
-
-    ## 
+    ##
     # @brief Inserts a decimal point into the input string
     # 
     def decimalPressed(self):
         if self.lastButton == 'op' \
-                or self.decimalPoint == True \
-                or self.lastCharacter == '':
+            or self.decimalPoint == True \
+            or self.lastCharacter == '':
             return
 
         self.labelWrite.setText(self.labelWrite.text() + '.')
@@ -101,8 +97,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.lastCharacter = '.'
         self.lastButton = 'op'
 
-
-    ## 
+    ##
     # @brief Inserts the '+' character int the calc input
     # 
     def plusPressed(self):
@@ -114,8 +109,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.lastCharacter = '+'
         self.lastButton = 'op'
 
-
-    ## 
+    ##
     # @brief Inserts the '-' character int the calc input
     # 
     def minusPressed(self):
@@ -127,8 +121,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.lastCharacter = '-'
         self.lastButton = 'op'
 
-
-    ## 
+    ##
     # @brief Inserts the '^' character int the calc input
     # 
     def powerPressed(self):
@@ -140,8 +133,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.lastCharacter = '^'
         self.lastButton = 'op'
 
-
-    ## 
+    ##
     # @brief Inserts the '*' character into the calc input
     # 
     def mulPressed(self):
@@ -153,8 +145,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.lastCharacter = '*'
         self.lastButton = 'op'
 
-
-    ## 
+    ##
     # @brief Inserts the left bracket into the input text
     # 
     def bracketLeftPressed(self):
@@ -166,8 +157,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.lastCharacter = '('
         self.lastButton = 'op'
 
-
-    ## 
+    ##
     # @brief Inserts the right bracket into the input text
     # 
     def bracketRightPressed(self):
@@ -179,8 +169,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.lastCharacter = ')'
         self.lastButton = 'op'
 
-
-    ## 
+    ##
     # @brief Inserts the '/' character into the calc input
     # 
     def divPressed(self):
@@ -192,22 +181,20 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.lastCharacter = '/'
         self.lastButton = 'op'
 
-
-    ## 
+    ##
     # @brief Inserts the root symbol into the input. The user has to specify
     # the order of the root first
     # 
     def rootPressed(self):
         if self.lastButton != 'dig' and self.lastCharacter != ')':
-            return 
+            return
 
         self.labelWrite.setText(self.labelWrite.text() + ' √ ')
         self.decimalPoint = False
         self.lastCharacter = '√'
         self.lastButton = 'op'
 
-
-    ## 
+    ##
     # @brief Evaluates the current input and outputs the value of its
     # natural logarithm
     # 
@@ -233,8 +220,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.lastButton = 'dig'
         self.decimalPoint = False
 
-
-    ## 
+    ##
     # @brief Evaluates the current input and outputs the value of its
     # factorial
     # 
@@ -246,11 +232,11 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
             or float(self.labelAns.text()) > 995:
             self.labelAns.setText('infinity')
             return
-        
+
         # Checks if the result is a whole number and if so, trims the decimal part
         if int(float(self.labelAns.text())) - float(self.labelAns.text()) == 0:
             self.labelAns.setText(str(int(float(self.labelAns.text()))))
-        
+
         try:
             self.ans = str(Mathlibrary.factorial(int(self.labelAns.text())))
         except:
@@ -268,26 +254,24 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.lastButton = 'dig'
         self.decimalPoint = False
 
-
-    ## 
+    ##
     # @brief Resets the calc to the default state
     # 
     def cleanPressed(self):
-        self.labelWrite.setText('') 
-        self.labelAns.setText('0') 
+        self.labelWrite.setText('')
+        self.labelAns.setText('0')
         self.lastCharacter = ''
         self.lastButton = 'dig'
         self.decimalPoint = False
         self.ans = '0'
 
-
-    ## 
+    ##
     # @brief Inserts a 'last answer' variable into the calc input label
     # 
     def ansPressed(self):
         if (self.lastButton == 'dig' \
-                or self.lastCharacter == '.') \
-                and self.labelWrite.text() != '':
+            or self.lastCharacter == '.') \
+            and self.labelWrite.text() != '':
             return
 
         self.labelWrite.setText(self.labelWrite.text() + 'ANS')
@@ -295,8 +279,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.lastCharacter = 'a'
         self.decimalPoint = True
 
-
-    ## 
+    ##
     # @brief Evaluates current input and prints the result to the
     # answer label
     # 
