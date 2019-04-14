@@ -242,7 +242,8 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.equalsPressed()
         if self.labelAns.text() == 'ERROR':
             return
-        if math.isinf(float(self.labelAns.text())):
+        if math.isinf(float(self.labelAns.text())) \
+            or float(self.labelAns.text()) > 995:
             self.labelAns.setText('infinity')
             return
         
