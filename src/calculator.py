@@ -1,10 +1,8 @@
 ##
-# @package calculator
-# Module consisting of ui control functions
-#
-# This module contains all the necessary methods
-# for the interconnection of the ui of the calculator and the
-# mathematical and evaluation funcions
+# @file calculator.py
+# 
+# @brief Module consisting of funcions that handle the
+# user interaction with the gui
 
 from PyQt5 import QtWidgets
 from ui_calculator import CalculatorUi
@@ -12,8 +10,12 @@ import math
 import evaluate
 from mathlibrary import Mathlibrary
 
-
+##
+# @brief This class contains all the necessary methods
+# for the interconnection of the ui of the calculator and the
+# mathematical and evaluation funcions
 class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
+
     ##
     # @brief Stores the value of the last evaluated expression
     #
@@ -221,8 +223,8 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.decimalPoint = False
 
     ##
-    # @brief Evaluates the current input and outputs the value of its
-    # factorial
+    # @brief Evaluates the current calculator input and outputs the value
+    # of its factorial
     # 
     def factorialPressed(self):
         self.equalsPressed()
@@ -298,7 +300,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
                 self.ans = ' ( ' + self.ans[:1] + ' ' + self.ans[1:] + ' ) '
             self.labelWrite.setText(self.labelWrite.text().replace('ANS', self.ans))
 
-        # Creates the possibility to use previous result without explicitly
+        # Gives the user an option to use previous result without explicitly
         # specifying it
         if self.labelWrite.text()[0] not in '0123456789':
             if self.labelWrite.text()[1] != '(':
