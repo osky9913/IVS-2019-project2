@@ -121,9 +121,9 @@ def doMath(op, op1, op2):
     elif op == "+":
         return Mathlibrary.add(op1, op2)
     elif op == "√":
-        return Mathlibrary.root(op2, int(op1))
+        return Mathlibrary.root(op2, op1)
     elif op == "^":
-        return Mathlibrary.pow(op1, int(op2))
+        return Mathlibrary.pow(op1, op2)
 
     else:
         return Mathlibrary.sub(op1, op2)
