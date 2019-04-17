@@ -81,7 +81,7 @@ class Mathlibrary:
     def factorial(a):
         if isinstance(a, str):
             raise ValueError('Factorial: a is not a number')
-        if a < 0 or isinstance(a, float):
+        if a < 0 or int(a) - a != 0:
             raise ValueError('Factorial is not defined for negative numbers or floats')
 
         if a == 1 or a == 0:
@@ -102,7 +102,7 @@ class Mathlibrary:
     # @return Value of 'base^exp'
     @staticmethod
     def pow(base, exp):
-        if not isinstance(exp, int) or exp < 0:
+        if int(exp) - exp != 0 or exp < 0:
             raise ValueError('The exponent has to be a positive integer')
         return round(base ** exp, 10)
 
@@ -122,11 +122,11 @@ class Mathlibrary:
     # @return Value of the 'n-th' root of 'base'
     @staticmethod
     def root(base, n):
-        if not isinstance(n, int) or n <= 0:
+        if int(n) - n != 0 or n <= 0:
             raise ValueError('The order of the root has to be a natural number')
         if base < 0 and (n % 2) == 0:
             raise ValueError('This root has no solution in real numbers')
-        if isinstance(base, float) and base < 0:
+        if int(base) - base != 0 and base < 0:
             raise ValueError('The value of this root is undefined')
 
         if base < 0:
