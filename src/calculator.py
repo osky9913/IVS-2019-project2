@@ -1,6 +1,7 @@
 ##
 # @file calculator.py
-# 
+# @author xsedla1h, xsvobo1t
+#
 # @brief Module consisting of funcions that handle the
 # user interaction with the gui
 
@@ -10,12 +11,12 @@ import math
 import evaluate
 from mathlibrary import Mathlibrary
 
+
 ##
 # @brief This class contains all the necessary methods
 # for the interconnection of the ui of the calculator and the
 # mathematical and evaluation funcions
 class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
-
     ##
     # @brief Stores the value of the last evaluated expression
     #
@@ -39,6 +40,10 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
     #
     decimalPoint = False
 
+
+    ##
+    # @brief constructor
+    #
     def __init__(self):
         super().__init__()
         self.setupUi(self)
