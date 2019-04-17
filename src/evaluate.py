@@ -3,9 +3,13 @@
 ##
 # @file evaluate.py
 # @author xosval03
-# @brief This file solving the math expression and return the result
+# @brief The package solving the math expression and return the result
 
 
+
+##
+# @package evaluate
+# This package contains all functions to solve the mathematical expression
 
 # VUT FIT 1BIT
 # IVS-Project2

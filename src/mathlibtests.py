@@ -14,9 +14,8 @@
 
 ##
 #
-# @package mathlibtests
 #
-# Unit tests for mathematical functions of calculator
+# @brief Unit tests for mathematical functions of calculator
 # 
 # Modul contains various tests to check
 # functionality of individual functions.
@@ -31,7 +30,6 @@ from evaluate import resolve
 
 
 ##
-#
 # @brief Testing add function.
 class MathLibraryTestAdd(unittest.TestCase):
     def setUp(self):
@@ -158,7 +156,7 @@ class MathLibraryTestMul(unittest.TestCase):
 
 ##
 # @brief Testing factorial function and its exception handling when
-# parameter is not a number, is negative or floating point number.
+# @param parameter is not a number, is negative or floating point number.
 
 class MathLibraryTestFactorial(unittest.TestCase):
     def setUp(self):
@@ -193,7 +191,7 @@ class MathLibraryTestFactorial(unittest.TestCase):
 
 ##
 # @brief Testing pow function and its exception handling when
-# parameter is zero or negative or floating point number.
+# @param parameter is zero or negative or floating point number.
 
 class MathLibraryTestPow(unittest.TestCase):
     def setUp(self):

@@ -3,7 +3,11 @@
 ##
 # @file mathlibrary.py
 # @author xsedla1h
-#
+# @brief Library of mathematical methods for the calculator
+
+
+
+##
 # @brief Library of mathematical methods for the calculator
 #
 # This module contains all the necessary methods

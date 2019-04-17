@@ -3,7 +3,7 @@
 ##
 # @file main.py
 # @author xsvobo1t
-# @brief This is the main program to run the Calculator
+# @brief The main program to run the Calculator
 
 import sys
 from PyQt5.QtWidgets import QApplication
