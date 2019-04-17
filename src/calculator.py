@@ -71,6 +71,20 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.pushButton_equals.clicked.connect(self.equalsPressed)
         self.labelAns.setText('0')
 
+        self.pushButton_help.setToolTipDuration(99999)
+        self.pushButton_help.setToolTip("\
+        Welcome to our calculator!\n\
+        This calculator is able to solve various types of expressions\n\
+        but the user has to follow certain rules:\n\n\
+         1. Any negative value has to be contained within brackets: (-1)    \n\
+         2. Functions 'ln' and 'x!' first evaluate current user input,\n\
+              then calculate the given function value from the result\n\
+         3. In order to use the '√' function the user has to specify\n\
+              the order of the root first: 2√3\n\
+         4. 'ANS' variable stores the last caculated result\n\
+         5. The calculator implicitely remembers the most recent result\n\
+         ")
+
     ##
     # @brief Inserts a particular digit into the input string
     # 

@@ -272,7 +272,7 @@ class CalculatorUi(object):
         self.pushButton_8.setText(_translate("Calculator", "8"))
         self.pushButton_mul.setText(_translate("Calculator", " x "))
         self.pushButton_powr.setText(_translate("Calculator", "^"))
-        self.pushButton_factorial.setText(_translate("Calculator", "!"))
+        self.pushButton_factorial.setText(_translate("Calculator", "x!"))
         self.pushButton_equals.setText(_translate("Calculator", "="))
         self.pushButton_bracketR.setText(_translate("Calculator", " ) "))
         self.pushButton_clean.setText(_translate("Calculator", "C"))
@@ -280,10 +280,10 @@ class CalculatorUi(object):
         self.pushButton_bracketL.setText(_translate("Calculator", "("))
         self.pushButton_ln.setText(_translate("Calculator", "ln"))
         self.pushButton_root.setText(_translate("Calculator", "√"))
-        self.pushButton_help.setStyleSheet(_translate("Calculator", "QPushButton { color:white;background-color: #44bb46; border: 1px solid white; font-weight:900;} \n"
-"QPushButton:pressed { background-color:#348b35; } \n"
+        self.pushButton_help.setStyleSheet(_translate("Calculator", "QPushButton { color:white;background-color: #FF4040; border: 1px solid white; font-weight:900;} \n"
+"QPushButton:hover { background-color:#E62A2A; } \n"
 ""))
-        self.pushButton_help.setText(_translate("Calculator", "HELP"))
+        self.pushButton_help.setText(_translate("Calculator", "H\nE\nL\nP"))
         self.labelWrite.setText(_translate("Calculator", ""))
 
 
