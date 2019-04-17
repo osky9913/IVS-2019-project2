@@ -13,6 +13,7 @@ class CalculatorUi(object):
     def setupUi(self, Calculator):
         Calculator.setObjectName("Calculator")
         Calculator.resize(421, 431)
+        Calculator.setFixedSize(421,431)
         self.centralWidget = QtWidgets.QWidget(Calculator)
         self.centralWidget.setObjectName("centralWidget")
         self.pushButton_4 = QtWidgets.QPushButton(self.centralWidget)
