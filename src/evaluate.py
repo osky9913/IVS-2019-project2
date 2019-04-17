@@ -1,16 +1,25 @@
 #!/usr/bin/python3
 
-#VUT FIT 1BIT
-#IVS-Project2
-#Author: Martin Osvald
-#Login: xosval03
-
-# @author Martin Osvald xosval03
+##
+# @file evaluate.py
+# @author xosval03
+# @brief The package solving the math expression and return the result
 
 
 
+##
+# @package evaluate
+# This package contains all functions to solve the mathematical expression
 
-from pythonds.basic.stack import Stack #pip3 install --user  pythonds
+# VUT FIT 1BIT
+# IVS-Project2
+# Author: Martin Osvald
+# Login: xosval03
+
+
+
+
+from pythonds.basic.stack import Stack  # pip3 install --user  pythonds
 from mathlibrary import Mathlibrary
 
 
@@ -20,30 +29,25 @@ from mathlibrary import Mathlibrary
 # @param s String Number ( float or int ) 
 #
 # @return boolean True or False
-
 def isNumber(s):
-    
-    
     for i in s:
-        
+
         if i not in "0123456789.":
             return False
-        
-        
 
     return True
 
 
-##
-#@brief changing a Math expression from infixt to Postif
-#
-#@param infixexpr Math expression string with whitespace between characters 
-#
-#@return string  as infix expression
-
 # Solution is based on article on http://interactivepython.org/runestone/static/pythonds/BasicDS/InfixPrefixandPostfixExpressions.html
 # This solution is edit because of floating numbers and new operators
 # Also there our function for validate number
+
+##
+# @brief changing a Math expression from infixt to Postif
+#
+# @param infixexpr Math expression string with whitespace between characters
+#
+# @return string  as infix expression
 
 def infixToPostfix(infixexpr):
     operator = {}
@@ -56,30 +60,28 @@ def infixToPostfix(infixexpr):
     operator["("] = 1
     opStack = Stack()
     postfixList = []
-    
+
     tokenList = infixexpr.split()
-    
-    for i in range(0,len(tokenList)):
+
+    for i in range(0, len(tokenList)):
         if tokenList[i] == '-':
             if i == 0:
-                tokenList.insert(0,'0')
+                tokenList.insert(0, '0')
 
-            elif isNumber(tokenList[i-1]) == False and  tokenList[i-1] != ')' :
-                tokenList.insert(i,'0')
+            elif isNumber(tokenList[i - 1]) == False and tokenList[i - 1] != ')':
+                tokenList.insert(i, '0')
 
             else:
                 continue
-    
-    
-    #Regex solution , doesn't work 
-    #import re
-    #tokenList=re.findall(r"[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)  +|[()+\-*√^\/]", infixexpr) nefunguje
 
+    # Regex solution , doesn't work
+    # import re
+    # tokenList=re.findall(r"[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)  +|[()+\-*√^\/]", infixexpr) nefunguje
 
     for token in tokenList:
 
-        if  ( isNumber(token) == True ):
-            
+        if (isNumber(token) == True):
+
             postfixList.append(token)
         elif token == '(':
             opStack.push(token)
@@ -90,13 +92,11 @@ def infixToPostfix(infixexpr):
                 topToken = opStack.pop()
         else:
             while (not opStack.isEmpty()) and (operator[opStack.peek()] >= operator[token]):
-                  postfixList.append(opStack.pop())
+                postfixList.append(opStack.pop())
             opStack.push(token)
 
     while not opStack.isEmpty():
         postfixList.append(opStack.pop())
-
-
 
     return " ".join(postfixList)
 
@@ -113,22 +113,20 @@ def infixToPostfix(infixexpr):
 # @return result
 
 
-
 def doMath(op, op1, op2):
     if op == "*":
-        return Mathlibrary.mul(op1,op2)  
+        return Mathlibrary.mul(op1, op2)
     elif op == "/":
-        return Mathlibrary.div(op1,op2)
+        return Mathlibrary.div(op1, op2)
     elif op == "+":
-        return Mathlibrary.add(op1,op2)
+        return Mathlibrary.add(op1, op2)
     elif op == "√":
-        return Mathlibrary.root(op2,int(op1))
+        return Mathlibrary.root(op2, int(op1))
     elif op == "^":
-        return Mathlibrary.pow(op1,int(op2))
+        return Mathlibrary.pow(op1, int(op2))
 
     else:
-        return Mathlibrary.sub(op1,op2)
-
+        return Mathlibrary.sub(op1, op2)
 
 
 ##
@@ -140,28 +138,24 @@ def doMath(op, op1, op2):
 
 def postfixEval(postfixExpr):
     operandStack = Stack()
-    #operandStack.push(0)
+    # operandStack.push(0)
     tokenList = postfixExpr.split()
 
     for token in tokenList:
-        if  ( isNumber(token) == True ):
+        if (isNumber(token) == True):
             operandStack.push(float(token))
         else:
             operand2 = operandStack.pop()
             operand1 = operandStack.pop()
             try:
-                doMath(token,operand1,operand2)
+                doMath(token, operand1, operand2)
             except:
                 raise ValueError("Not valid expression")
-            result = doMath(token,operand1,operand2)
-            
+            result = doMath(token, operand1, operand2)
+
             operandStack.push(result)
-    
+
     return operandStack.pop()
-
-
-
-
 
 
 ##
@@ -170,37 +164,35 @@ def postfixEval(postfixExpr):
 # @param expression is string of mathematical expression
 #
 # @return boolean True or false
-
-
 def validate(expression):
-    expression=expression.split()
- 
+    expression = expression.split()
+
     flagNumber = False
-    counterOfLeft=0
-    counterOfRight=0
-       
+    counterOfLeft = 0
+    counterOfRight = 0
+
     for i in expression:
- 
+
         if i == '.':
             return False
 
-        if isNumber(i)==True:
+        if isNumber(i) == True:
             flagNumber = True
 
-        elif(i =='('):
-            counterOfLeft+=1
+        elif (i == '('):
+            counterOfLeft += 1
             flagNumber = False
 
-        elif(i ==')'):
-            counterOfRight+=1
+        elif (i == ')'):
+            counterOfRight += 1
 
-        elif(counterOfRight > counterOfLeft):
-            return False
-    
-        elif (i.count('.') > 1) :
+        elif (counterOfRight > counterOfLeft):
             return False
 
-        elif ( i.count('.') == 1 and len(s)== 1):
+        elif (i.count('.') > 1):
+            return False
+
+        elif (i.count('.') == 1 and len(s) == 1):
             return False
 
         elif i[0] == '.' or i[-1] == '.':
@@ -209,33 +201,28 @@ def validate(expression):
         else:
             continue
 
+    for i in range(0, len(expression)):
 
-    for i in range(0,len(expression)):
- 
         if (i == 0) and (expression[i] in "√^+*/"):
             return False
-        elif (expression[i]   in "√+^-*/" ) and (expression[i-1] in "√+^-*/" )  :
+        elif (expression[i] in "√+^-*/") and (expression[i - 1] in "√+^-*/"):
             return False
         else:
             continue
 
+    if (expression[len(expression) - 1] in "√+^-*/"):
+        return False
 
-    if ( expression[len(expression)-1] in "√+^-*/" ):
-        return False 
-
-    for i in range(0,len(expression)):
-        if expression[i]   in "√+^-*/":
-            if expression[i+1] == ')':
+    for i in range(0, len(expression)):
+        if expression[i] in "√+^-*/":
+            if expression[i + 1] == ')':
                 return False
 
-
-
-    if( counterOfRight != counterOfLeft):
+    if (counterOfRight != counterOfLeft):
         return False
-    
-    if( flagNumber == False):
+
+    if (flagNumber == False):
         return False
-    
 
     return True
 
@@ -245,15 +232,8 @@ def validate(expression):
 #
 # @param expression is string of mathematical expression
 #
-# @return result 
-
-
+# @return result
 def resolve(expression):
-    if ( validate(expression) != True ):
-       raise ValueError("Not valid expression")
-    return( postfixEval(infixToPostfix(expression)))
-
-
-
-
-
+    if (validate(expression) != True):
+        raise ValueError("Not valid expression")
+    return (postfixEval(infixToPostfix(expression)))

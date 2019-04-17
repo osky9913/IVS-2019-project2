@@ -1,5 +1,11 @@
 #!/usr/bin/python3
-import  sys
+
+##
+# @file main.py
+# @author xsvobo1t
+# @brief The main program to run the Calculator
+
+import sys
 from PyQt5.QtWidgets import QApplication
 from calculator import CalculatorWindow
 

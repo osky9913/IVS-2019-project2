@@ -31,3 +31,4 @@
 # Python and ide metadata
 __pycache__/
 .idea/
+Documentation/

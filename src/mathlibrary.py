@@ -1,13 +1,19 @@
 #!/usr/bin/python3
 
 ##
-# @package mathlibrary
-# Library of mathematical methods for the calculator
+# @file mathlibrary.py
+# @author xsedla1h
+# @brief Library of mathematical methods for the calculator
+
+
+
+##
+# @brief Library of mathematical methods for the calculator
 #
 # This module contains all the necessary methods
 # for the calculator so that it can perform all
 # mathematical operations.
-
+#
 
 class Mathlibrary:
 
@@ -19,7 +25,7 @@ class Mathlibrary:
     # 
     # @return Sum of 'a' and 'b'
     @staticmethod
-    def add(a, b):
+    def add( a , b ):
         return round(a + b, 10)
 
 
