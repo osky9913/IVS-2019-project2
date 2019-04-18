@@ -43,33 +43,41 @@ if __name__ == '__main__':
         inputNumbers += line
         N += 1
     inputNumbers = inputNumbers.replace('\n',' ')
-    subSum = createSubSum(inputNumbers)
-    totalSum = createSum(inputNumbers, subSum)
-    evalString = "2 √ ( ( 1 / {} - 1 ) * {} )".format(N, totalSum)
-    firstSum = 0
-    finalSum = 0
 
-    #profiling on one single string
+    #Profiling on one single string
+    #subSum = createSubSum(inputNumbers)
+    #totalSum = createSum(inputNumbers, subSum)
+    #evalString = "2 √ ( ( 1 / {} - 1 ) * {} )".format(N, totalSum)
     #with PyCallGraph(output=GraphvizOutput()):
     #    print(resolve(evalString))
 
 
-    #profiling using side calculations
+    #Profiling using side calculations
+    firstSum = 0
+    finalSum = 0
     with PyCallGraph(output=GraphvizOutput()):
-        for x in inputNumbers.split():
-            firstSum = resolve("{} + {}".format(firstSum, x))#sum of Xi
+        #Code in comments is computing according to IVS formula but theres an error!
+       # for x in inputNumbers.split():
+        #    firstSum = resolve("{} + {}".format(firstSum, x))#sum of Xi
 
         #sum of Xi div by number of numbers over 2 multiply by number of numbers =
         # => right side of SUM in formula
-        firstSum = resolve("( {} / {} ) ^ 2 * {}".format(firstSum, N, N))
+       # firstSum = resolve("( {} / {} ) ^ 2 * {}".format(firstSum, N, N))
         
-        for x in inputNumbers.split():
+       # for x in inputNumbers.split():
             #Xi ^ 2 in SUM
-            xovertwo = resolve("{} ^ 2".format(x))
+      #      xovertwo = resolve("{} ^ 2".format(x))
             #SUM of Xi^2 - firstSUM
-            finalSum = resolve("{} + ( {} - {} )".format(finalSum, xovertwo, firstSum))
+       #     finalSum = resolve("{} + ( {} - {} )".format(finalSum, xovertwo, firstSum))
             #print("{} + {}".format(finalSum, item))
             #finalSum = resolve("{} + {}".format(finalSum, item))
        # print(finalSum)
         #print(resolve("2 √ ( 1 / ( {} - 1 ) * {} )".format(N, finalSum)))
 
+        #According to wikipedia formula works fine
+        for x in inputNumbers.split():
+            firstSum = resolve("{} + {}".format(firstSum, x))#sum of Xi
+        firstSum = resolve("{} / {}".format(firstSum, N, N))
+        for x in inputNumbers.split():
+            finalSum = resolve("{} + ( {} - {} ) ^ 2".format(finalSum, x, firstSum))
+        print(resolve("2 √ ( 1 / ( {} - 1 ) * {} )".format(N, finalSum)))
