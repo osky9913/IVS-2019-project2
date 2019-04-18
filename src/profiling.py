@@ -12,7 +12,8 @@ from pycallgraph.output import GraphvizOutput
 from evaluate import resolve
 import sys
 
-
+# create SUM in standard deviation formula as string
+# for evaluating single string
 def createSum(inputNumbers, subSum):
     total = "( "
     for x in inputNumbers.split():
@@ -21,7 +22,8 @@ def createSum(inputNumbers, subSum):
     total += ") "
     return total
 
-
+#  creating SUM of given numbers divided by count of numbers squared
+# for evaluating single string
 def createSubSum(inputNumbers):
     totalSubSum = "( ( ( "
     N = 0
@@ -30,19 +32,44 @@ def createSubSum(inputNumbers):
         totalSubSum += ' + '
         N += 1
     totalSubSum = totalSubSum[:-3]
-    totalSubSum += " ) / " + str(N) + " ) ^ 2 * " + str(N) + " ) " + str(N)
+    totalSubSum += " ) / " + str(N) + " ) ^ 2 * " + str(N) + " ) "
     return totalSubSum
 
+# main
 if __name__ == '__main__':
     inputNumbers=""
+    N = 0 
     for line in sys.stdin:
         inputNumbers += line
+        N += 1
     inputNumbers = inputNumbers.replace('\n',' ')
     subSum = createSubSum(inputNumbers)
-    N = subSum.split()[-1]
-    subSum = subSum[:-1]
     totalSum = createSum(inputNumbers, subSum)
     evalString = "2 √ ( ( 1 / {} - 1 ) * {} )".format(N, totalSum)
+    firstSum = 0
+    finalSum = 0
+
+    #profiling on one single string
+    #with PyCallGraph(output=GraphvizOutput()):
+    #    print(resolve(evalString))
+
+
+    #profiling using side calculations
     with PyCallGraph(output=GraphvizOutput()):
-        resolve(evalString)
+        for x in inputNumbers.split():
+            firstSum = resolve("{} + {}".format(firstSum, x))#sum of Xi
+
+        #sum of Xi div by number of numbers over 2 multiply by number of numbers =
+        # => right side of SUM in formula
+        firstSum = resolve("( {} / {} ) ^ 2 * {}".format(firstSum, N, N))
         
+        for x in inputNumbers.split():
+            #Xi ^ 2 in SUM
+            xovertwo = resolve("{} ^ 2".format(x))
+            #SUM of Xi^2 - firstSUM
+            finalSum = resolve("{} + ( {} - {} )".format(finalSum, xovertwo, firstSum))
+            #print("{} + {}".format(finalSum, item))
+            #finalSum = resolve("{} + {}".format(finalSum, item))
+       # print(finalSum)
+        #print(resolve("2 √ ( 1 / ( {} - 1 ) * {} )".format(N, finalSum)))
+
