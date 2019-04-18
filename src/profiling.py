@@ -54,30 +54,14 @@ if __name__ == '__main__':
 
     #Profiling using side calculations
     firstSum = 0
-    finalSum = 0
+    secondSum = 0
     with PyCallGraph(output=GraphvizOutput()):
-        #Code in comments is computing according to IVS formula but theres an error!
-       # for x in inputNumbers.split():
-        #    firstSum = resolve("{} + {}".format(firstSum, x))#sum of Xi
-
-        #sum of Xi div by number of numbers over 2 multiply by number of numbers =
-        # => right side of SUM in formula
-       # firstSum = resolve("( {} / {} ) ^ 2 * {}".format(firstSum, N, N))
-        
-       # for x in inputNumbers.split():
-            #Xi ^ 2 in SUM
-      #      xovertwo = resolve("{} ^ 2".format(x))
-            #SUM of Xi^2 - firstSUM
-       #     finalSum = resolve("{} + ( {} - {} )".format(finalSum, xovertwo, firstSum))
-            #print("{} + {}".format(finalSum, item))
-            #finalSum = resolve("{} + {}".format(finalSum, item))
-       # print(finalSum)
-        #print(resolve("2 √ ( 1 / ( {} - 1 ) * {} )".format(N, finalSum)))
-
-        #According to wikipedia formula works fine
+        #Calculate SUM of numbers and SUM of numbers^2
         for x in inputNumbers.split():
             firstSum = resolve("{} + {}".format(firstSum, x))#sum of Xi
-        firstSum = resolve("{} / {}".format(firstSum, N, N))
-        for x in inputNumbers.split():
-            finalSum = resolve("{} + ( {} - {} ) ^ 2".format(finalSum, x, firstSum))
-        print(resolve("2 √ ( 1 / ( {} - 1 ) * {} )".format(N, finalSum)))
+            secondSum = resolve("{} + {} ^ 2".format(secondSum, x))
+        #N*(x')^2
+        firstSum = resolve("( {} / {} ) ^ 2 * {}".format(firstSum, N, N))
+        #final formula
+        print(resolve("2 √ ( 1 / ( {} - 1 ) * ( {} - {} ) )".format(N, secondSum, firstSum)))
+
