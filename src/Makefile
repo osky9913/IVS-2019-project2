@@ -13,14 +13,11 @@
 all: 
 
 clean:
-	./mathlibtests.py
 
 test:
 
-doc: Doxyfile *.py
-	doxygen
+doc:
 
 run:
-	./main.py
 
 profile:
