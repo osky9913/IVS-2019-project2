@@ -54,7 +54,7 @@ def infixToPostfix(infixexpr):
     operator["+"] = 2
     operator["-"] = 2
     operator["("] = 1
-    opStack = Stack()
+    opStack = EvalStack()
     postfixList = []
 
     tokenList = infixexpr.split()
@@ -87,11 +87,11 @@ def infixToPostfix(infixexpr):
                 postfixList.append(topToken)
                 topToken = opStack.pop()
         else:
-            while (not opStack.isEmpty()) and (operator[opStack.peek()] >= operator[token]):
+            while (not opStack.empty()) and (operator[opStack.peek()] >= operator[token]):
                 postfixList.append(opStack.pop())
             opStack.push(token)
 
-    while not opStack.isEmpty():
+    while not opStack.empty():
         postfixList.append(opStack.pop())
 
     return " ".join(postfixList)
@@ -133,7 +133,7 @@ def doMath(op, op1, op2):
 # @return result
 
 def postfixEval(postfixExpr):
-    operandStack = Stack()
+    operandStack = EvalStack()
     # operandStack.push(0)
     tokenList = postfixExpr.split()
 
