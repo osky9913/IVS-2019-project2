@@ -1,45 +1,42 @@
 #!/usr/bin/python3
 # coding: utf-8
-#VUT FIT 1BIT
-#IVS-Project2
-#Author: Marek Sarvas
-#Login: xsarva00
 
 ##
-# @package mathlibtests
-# Unit tests for mathematical functions of calculator
+# @file mathlibtests.py
+# @author xsarva00
+# @brief Unit tests for mathematical functions of calculator
 # 
-# Modul contains various tests to check
+# Module containing various tests to check
 # functionality of individual functions.
 
 
-#Run tests with ./mathlib_tests in src folder
+# Run the tests with ./mathlibtests.py in the src folder
 
 import unittest
 import math
 from mathlibrary import Mathlibrary
 from evaluate import resolve
 
+
 ##
 # @brief Testing add function.
-
 class MathLibraryTestAdd(unittest.TestCase):
     def setUp(self):
         self.mathlib = Mathlibrary()
-         
+
     def testAddPositive(self):
         self.assertEqual(self.mathlib.add(0, 0), 0)
         self.assertEqual(self.mathlib.add(42, 37), 79)
         self.assertEqual(self.mathlib.add(234, 743), 977)
         self.assertEqual(self.mathlib.add(10000, 233891), 243891)
-                     
+
     def testAddNegative(self):
         self.assertEqual(self.mathlib.add(-14, -48), -62)
         self.assertEqual(self.mathlib.add(-34, 56), 22)
         self.assertEqual(self.mathlib.add(-2938, -230), -3168)
         self.assertEqual(self.mathlib.add(-83924, 21481), -62443)
         self.assertEqual(self.mathlib.add(1237471, -42194914284), -42193676813)
-                                
+
     def testAddPositiveFloat(self):
         self.assertAlmostEqual(self.mathlib.add(12.284523, 5.21421), 17.498733)
         self.assertAlmostEqual(self.mathlib.add(0.124894, 0.111111111), 0.23600511)
@@ -55,13 +52,14 @@ class MathLibraryTestAdd(unittest.TestCase):
         self.assertNotAlmostEqual(self.mathlib.add(-0.0000000001, -0.0000001), -0.0000002)
         self.assertAlmostEqual(self.mathlib.add(0.9999998, -0.9999999), -0.0000001)
 
+
 ##
 # @brief Testing sub function.
 
 class MathLibraryTestSub(unittest.TestCase):
     def setUp(self):
         self.mathlib = Mathlibrary()
-           
+
     def testSubPositive(self):
         self.assertEqual(self.mathlib.sub(2, 0), 2)
         self.assertEqual(self.mathlib.sub(0, 0), 0)
@@ -72,7 +70,7 @@ class MathLibraryTestSub(unittest.TestCase):
         self.assertEqual(self.mathlib.sub(42, 67), -25)
         self.assertEqual(self.mathlib.sub(4367, 5001), -634)
         self.assertEqual(self.mathlib.sub(14314, 148735481541), -148735467227)
-                          
+
     def testSubNegative(self):
         self.assertEqual(self.mathlib.sub(-2, 0), -2)
         self.assertEqual(self.mathlib.sub(-123, 45), -168)
@@ -81,7 +79,7 @@ class MathLibraryTestSub(unittest.TestCase):
         self.assertEqual(self.mathlib.sub(-1234567890, 2345237), -1236913127)
         self.assertEqual(self.mathlib.sub(-14701742817021, 14701742817021), -29403485634042)
         self.assertEqual(self.mathlib.sub(-14701742817021, -14701742817021), 0)
-                                       
+
     def testSubFloat(self):
         self.assertAlmostEqual(self.mathlib.sub(1.242, 0.239), 1.003)
         self.assertAlmostEqual(self.mathlib.sub(12.134532, 32.5239905), -20.3894585)
@@ -144,9 +142,10 @@ class MathLibraryTestMul(unittest.TestCase):
         self.assertAlmostEqual(self.mathlib.mul(-34.4104921, 913.83191), -31445.405719782911)
         self.assertAlmostEqual(self.mathlib.mul(-794.7415124, -0.05923), 47.072539779452)
 
+
 ##
 # @brief Testing factorial function and its exception handling when
-# parameter is not a number, is negative or floating point number.
+# @param parameter is not a number, is negative or floating point number.
 
 class MathLibraryTestFactorial(unittest.TestCase):
     def setUp(self):
@@ -181,7 +180,7 @@ class MathLibraryTestFactorial(unittest.TestCase):
 
 ##
 # @brief Testing pow function and its exception handling when
-# parameter is zero or negative or floating point number.
+# @param parameter is zero or negative or floating point number.
 
 class MathLibraryTestPow(unittest.TestCase):
     def setUp(self):
@@ -274,7 +273,7 @@ class MathLibraryTestRoot(unittest.TestCase):
 class MathLibraryTestLn(unittest.TestCase):
     def setUp(self):
         self.mathlib = Mathlibrary()
-    
+
     def testLnNegative(self):
         with self.assertRaises(ValueError):
             self.mathlib.ln(-123)
@@ -302,11 +301,11 @@ class MathLibraryTestLn(unittest.TestCase):
 
 
 ##
-# @breif Testing evaluation of expressions given to calculator and 
+# @brief Testing evaluation of expressions given to calculator and
 # exception handling caused by incorrect expression given
 
 
-class evaluateExpressionTest (unittest.TestCase):
+class evaluateExpressionTest(unittest.TestCase):
     def testIncorrectExpressions(self):
         with self.assertRaises(ValueError):
             resolve("( ) )")
@@ -337,17 +336,17 @@ class evaluateExpressionTest (unittest.TestCase):
         self.assertEqual(resolve("5 √ 32 + 6 √ 64"), 4)
         self.assertEqual(resolve("3 ^ 2 ^ 2"), 81)
 
-    def  testCorrectExpressionsBrackets(self):
+    def testCorrectExpressionsBrackets(self):
         self.assertEqual(resolve("( ( 6 - 4 ) - ( 9 + 2 ) ) * 2"), -18)
         self.assertEqual(resolve("( ( ( - 5 ) + ( - 2 ) ) + 10 ) * 3"), 9)
-        self.assertEqual(resolve("( ( 5 + 6 ) ) * 3"), 33)    
-    
+        self.assertEqual(resolve("( ( 5 + 6 ) ) * 3"), 33)
+
     def testCorrectExpressionsFloat(self):
         self.assertAlmostEqual(resolve("2.5 + 3.6 - 2.3"), 3.8)
         self.assertAlmostEqual(resolve("4.1 * 12.41 / 9.314"), 5.4628516212153)
         self.assertAlmostEqual(resolve("2 √ 2 * 2 √ 23 "), 6.782329983125)
         self.assertAlmostEqual(resolve("( ( 5 - 8 ) + 5 √ 42 ) * 4.2"), -3.7304997871396)
 
+
 if __name__ == '__main__':
     unittest.main()
-
