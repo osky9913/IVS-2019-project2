@@ -6,7 +6,6 @@
 # @brief The package solving the math expression and return the result
 
 
-
 ##
 # @package evaluate
 # This package contains all functions to solve the mathematical expression
@@ -16,10 +15,7 @@
 # Author: Martin Osvald
 # Login: xosval03
 
-
-
-
-from pythonds.basic.stack import Stack  # pip3 install --user  pythonds
+from stack import EvalStack
 from mathlibrary import Mathlibrary
 
 
