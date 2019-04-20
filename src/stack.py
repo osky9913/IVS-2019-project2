@@ -4,6 +4,9 @@
 # @brief Module containing a stack implementaion necessary
 # for some of the input evaluation functions
 
+##
+# @brief An implementation of the stack data structure used in
+# the evaluation process of our calculator
 class EvalStack:
     def __init__(self):
         self.content = []
@@ -24,7 +27,9 @@ class EvalStack:
     # @brief Checks if the stack is empty
     #
     def empty(self):
-        return self.content == []
+        if self.content == []:
+            return True
+        return False
 
     ##
     # @brief Returns the last added item

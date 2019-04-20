@@ -3,12 +3,8 @@
 ##
 # @file evaluate.py
 # @author xosval03
-# @brief The package solving the math expression and return the result
-
-
-##
-# @package evaluate
-# This package contains all functions to solve the mathematical expression
+# @brief This file contains all the necessary functions for evalulating
+# the calculator input
 
 # VUT FIT 1BIT
 # IVS-Project2
@@ -20,11 +16,11 @@ from mathlibrary import Mathlibrary
 
 
 ##
-# @brief Validate Number
+# @brief Checks if a string is a valid number
 #
-# @param s String Number ( float or int ) 
+# @param s The input string we need to check
 #
-# @return boolean True or False
+# @return True or False
 def isNumber(s):
     for i in s:
 
@@ -34,16 +30,16 @@ def isNumber(s):
     return True
 
 
-# Solution is based on article on http://interactivepython.org/runestone/static/pythonds/BasicDS/InfixPrefixandPostfixExpressions.html
-# This solution is edit because of floating numbers and new operators
-# Also there our function for validate number
+# The solution is based on an article which can be found on:
+# http://interactivepython.org/runestone/static/pythonds/BasicDS/InfixPrefixandPostfixExpressions.html
+# This solution modifies the original idea because of floats and new operators.
 
 ##
-# @brief changing a Math expression from infixt to Postif
+# @brief Changes a mathematical expression from infix to postfix
 #
-# @param infixexpr Math expression string with whitespace between characters
+# @param infixexpr Math expression string with whitespaces between characters
 #
-# @return string  as infix expression
+# @return Returns a string as an infix expression
 
 def infixToPostfix(infixexpr):
     operator = {}
@@ -70,10 +66,6 @@ def infixToPostfix(infixexpr):
             else:
                 continue
 
-    # Regex solution , doesn't work
-    # import re
-    # tokenList=re.findall(r"[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)  +|[()+\-*√^\/]", infixexpr) nefunguje
-
     for token in tokenList:
 
         if (isNumber(token) == True):
@@ -98,15 +90,16 @@ def infixToPostfix(infixexpr):
 
 
 ##
-# @brief function for stack evaluation , it's connected with Mathlibrary
+# @brife Evaluates the input taken from the stack, computes the result. Utilizes
+# the module mathlibrary
 #
-# @param op  is operator
+# @param op  Is an operator
 #
-# @param op1 is number
+# @param op1 Is a number
 #
-# @param op2 is number  
+# @param op2 Is a number  
 #
-# @return result
+# @return Returns the result of the operation
 
 
 def doMath(op, op1, op2):
@@ -126,15 +119,14 @@ def doMath(op, op1, op2):
 
 
 ##
-# @brief function create a Stack, adding a postif expression and then evaluate 
+# @brief Creates a stack from the postfix expression, then pops the content and evaluates it
 #
-# @param postfixExpr  is expression in postifx , between characters there are whitespaces 
+# @param postfixExpr An Expression in postfix split with whitespaces
 #
-# @return result
+# @return Returns the result
 
 def postfixEval(postfixExpr):
     operandStack = EvalStack()
-    # operandStack.push(0)
     tokenList = postfixExpr.split()
 
     for token in tokenList:
@@ -155,11 +147,11 @@ def postfixEval(postfixExpr):
 
 
 ##
-# @brief checked if the mathematical expression is correct ( infix ) 
+# @brief Checks if the mathematical expression is correct (infix) 
 #
-# @param expression is string of mathematical expression
+# @param expression A math expression
 #
-# @return boolean True or false
+# @return True or false
 def validate(expression):
     expression = expression.split()
 
@@ -224,11 +216,11 @@ def validate(expression):
 
 
 ##
-# @brief calculate a string mathematical expression and return a value like eval ( infix ) 
+# @brief Evaluates a mathematical expression and returns its result 
 #
-# @param expression is string of mathematical expression
+# @param expression A mathematical expression
 #
-# @return result
+# @return Returns the result of the evaluated expression
 def resolve(expression):
     if (validate(expression) != True):
         raise ValueError("Not valid expression")
