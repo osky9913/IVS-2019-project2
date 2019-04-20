@@ -12,7 +12,7 @@ PROJECT_FOLDER = xsedla1h_xsarva00_xsvobo1t_xosval03
 
 
 # Main project targets
-all: 
+all: run 
 
 pack: clean prepfolder
 	cd ../../ && zip -r $(PROJECT_FOLDER).zip $(PROJECT_FOLDER)
