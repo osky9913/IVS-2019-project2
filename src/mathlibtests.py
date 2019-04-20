@@ -4,13 +4,10 @@
 ##
 # @file mathlibtests.py
 # @author xsarva00
-# @brief Unit tests for mathematical functions of calculator
-# 
-# Module containing various tests to check
-# functionality of individual functions.
-
-
-# Run the tests with ./mathlibtests.py in the src folder
+# @brief Module containing various types of unit tests to check
+# the functionality of individual calculator functions.
+# @note To run the tests, use the command ./mathlibtests.py in the src folder
+# of the project
 
 import unittest
 import math
