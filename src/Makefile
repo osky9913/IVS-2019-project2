@@ -21,7 +21,7 @@ pack: clean prepfolder
 clean:
 	rm -rf __pycache__ ../__pycache__ .idea ../.idea
 	rm -rf ../doc 
-	rm -rf ../installer/nem-mad-calc-1.0
+	rm -rf ../installer/nem-mad-calc-1.0*
 
 test:
 	python3 mathlibtests.py
@@ -53,8 +53,9 @@ dependencies:
 	pip3 install --user pyqt5
 
 installer:
-	mkdir -p ../installer/nem-mad-calc-1.0
+	mkdir -p ../installer/nem-mad-calc-1.0/opt/nem-mad-calc
 	cp -r ../installer/DEBIAN ../installer/nem-mad-calc-1.0
+	cp -a main.py calculator.py ui_calculator.py stack.py evaluate.py mathlibrary.py ../installer/nem-mad-calc-1.0/opt/nem-mad-calc/
 	cp main.py mathlibrary.py evaluate.py calculator.py ui_calculator.py stack.py ../installer/nem-mad-calc-1.0
 	chmod +x ../installer/nem-mad-calc-1.0/DEBIAN/*
 	dpkg-deb --build ../installer/nem-mad-calc-1.0
