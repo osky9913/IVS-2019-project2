@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Nem-Mad-Calculator
+Exec=nem-mad-calc
+Icon=/usr/share/pixmaps/nem-mad-calc-icon.xpm
+Type=Application
+Categories=Python3;Utility;Office

@@ -1,4 +1,6 @@
 #!/bin/sh
 rm /usr/bin/nem-mad-calc 2>dev/null
 rm -rf /opt/nem-mad-calc 2>dev/null
+rm -f /usr/share/pixmaps/nem-mad-calc-icon.xpm
+rm -f /usr/share/applications/nem-mad-calc.desktop
 exit 0

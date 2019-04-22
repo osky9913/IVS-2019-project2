@@ -49,7 +49,11 @@ depend:
 installer:
 	rm -f $(INSTALLER).deb
 	mkdir -p $(INSTALLER)/opt/nem-mad-calc
+	mkdir -p $(INSTALLER)/usr/share/pixmaps
+	mkdir -p $(INSTALLER)/usr/share/applications
 	cp -r ../installer/DEBIAN $(INSTALLER)
+	cp ../installer/nem-mad-calc-icon.xpm $(INSTALLER)/usr/share/pixmaps
+	cp ../installer/nem-mad-calc.desktop $(INSTALLER)/usr/share/applications
 	cp -a main.py calculator.py ui_calculator.py stack.py evaluate.py mathlibrary.py $(INSTALLER)/opt/nem-mad-calc/
 	chmod +x $(INSTALLER)/DEBIAN/*
 	dpkg-deb --build $(INSTALLER)
