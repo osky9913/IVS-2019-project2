@@ -1,0 +1,3 @@
+#!/bin/sh
+ln -s /opt/nem-mad-calc/main.py /usr/bin/nem-mad-calc
+exit 0

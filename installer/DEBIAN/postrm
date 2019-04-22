@@ -1,0 +1,4 @@
+#!/bin/sh
+rm /usr/bin/nem-mad-calc 2>dev/null
+rm -rf /opt/nem-mad-calc 2>dev/null
+exit 0

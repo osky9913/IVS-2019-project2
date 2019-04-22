@@ -1,0 +1,3 @@
+#!/bin/sh
+mkdir /opt/nem-mad-calc
+exit 0

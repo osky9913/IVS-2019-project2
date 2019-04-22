@@ -1,0 +1,6 @@
+calculator.py /opt/nem-mad-calc/
+evaluate.py /opt/nem-mad-calc/
+main.py /opt/nem-mad-calc/
+mathlibrary.py /opt/nem-mad-calc/
+ui_calculator.py /opt/nem-mad-calc/
+stack.py /opt/nem-mad-calc/
