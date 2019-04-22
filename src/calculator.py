@@ -80,14 +80,18 @@ class CalculatorWindow(QtWidgets.QMainWindow, CalculatorUi):
         self.pushButton_help.setToolTip("\
         Welcome to our calculator!\n\
         This calculator is able to solve various types of expressions\n\
-        but the user has to follow certain rules:\n\n\
-         1. Any negative value has to be contained within brackets: (-1)    \n\
+        but can sometimes seem a bit intimidating... Here are some tips:\n\n\
+         1. Any negative value has to be contained within parentheses: (-1)   \n\
          2. Functions 'ln' and 'x!' first evaluate current user input,\n\
-              then calculate the given function value from the result\n\
+              then calculate the given function value from the result.\n\
          3. In order to use the '√' function the user has to specify\n\
               the order of the root first: 2√3\n\
-         4. 'ANS' variable stores the last caculated result\n\
-         5. The calculator implicitely remembers the most recent result\n\
+         4. 'ANS' variable stores the last caculated result.\n\
+         5. The calculator implicitely remembers the most recent result.\n\
+         6. When not specified otherwise (e.g. by using parentheses or\n\
+              making use of operator priority), the calculator evaluates\n\
+              the input strictly from left to right.\n\n\
+        We hope you will enjoy using our calculator :)\n\
          ")
 
     ##
