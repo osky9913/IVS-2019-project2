@@ -1,0 +1,23 @@
+We run two sets of profiling script each with input of 10, 100 and 1000 positive numbers.
+One set was run with evaluating given formula as one big string the other with side calculations 
+with calling directly mathlibrary without evaluating it.
+
+From the attached graphs is clearly seen that firstly, functions which evaluate the string expression and
+check if inserted string is in correct form take the biggest amount of time and secondly, they have
+the most lines of code. The time for solving string expresions is raising really fast 
+with more complex expressions to compute mostly due to checking expression and solving parenthesis. 
+Furthemore changing expression to a posix form and using stack by improting library. Also this set 
+of profiling revealed that it only works with positive numbers caused by implementation requiring 
+space between each character or number.
+
+Second set of profiling shows that calling directly our math library is way faster and math functions
+are on a level where there is not much to do for optimalization, maybe using different formulas for 
+computing factorial or root.
+
+On the other hand python is quite slow language so bigger optimalization would be using for example c++.
+Another optimalization could be in implementation of solving evaluation of given expression. Despite the 
+fact that it is runnig really decenti, problems start as input strings are bigger. 
+
+In conclusion our calculator works fine and can handle a lot but is weak for heavy use. The biggest optimalization
+would be in functions that work with stack, like converting postfix to infix and evaluation of postfix wich call 
+push and pop on stack 10000 times on 1000 numbers.
