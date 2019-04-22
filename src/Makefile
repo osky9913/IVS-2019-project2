@@ -21,6 +21,7 @@ pack: clean prepfolder
 clean:
 	rm -rf __pycache__ ../__pycache__ .idea ../.idea
 	rm -rf ../doc 
+	rm -rf ../installer/nem-mad-calc-1.0
 
 test:
 	python3 mathlibtests.py
@@ -33,7 +34,9 @@ run:
 	python3 main.py
 
 profile:
-	python3 profiling.py
+	echo "30 1 2 22 3 5 4 42 4 144" | python3 profiling.py
+
+help:
 
 # Other targets utilised by some of the main targets
 prepfolder: doc
@@ -45,3 +48,13 @@ prepfolder: doc
 	cd ../../ && cp -ar IVS-2019-project2/. $(PROJECT_FOLDER)/repo
 	cd ../../$(PROJECT_FOLDER)/repo && rm -rf installer doc
 	rm -rf ../doc
+
+dependencies:
+	pip3 install --user pyqt5
+
+installer:
+	mkdir -p ../installer/nem-mad-calc-1.0
+	cp -r ../installer/DEBIAN ../installer/nem-mad-calc-1.0
+	cp main.py mathlibrary.py evaluate.py calculator.py ui_calculator.py stack.py ../installer/nem-mad-calc-1.0
+	chmod +x ../installer/nem-mad-calc-1.0/DEBIAN/*
+	dpkg-deb --build ../installer/nem-mad-calc-1.0
