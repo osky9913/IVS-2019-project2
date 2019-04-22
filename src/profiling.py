@@ -1,19 +1,30 @@
 #!/usr/bin/python3
 
-#VUT FIT 1BIT
-#IVS-Project2
-#Author: Marek Sarvas
-#Login: xsarva00
+##
+# @file profiling.py
+# @author xsarva00
+# @brief profiling for mathematical and evaluating functions
 
-# @author Marek Sarvas xsarva00
+
+## 
+# @brief profiling for mathematical and evaluating functions
+#
+# This modul contains script for profiling functions od calculator
+# on given mathematical formula. Its output is computed number and
+# graph of called functions, number of calles and time.
 
 from pycallgraph import PyCallGraph
 from pycallgraph.output import GraphvizOutput
 from evaluate import resolve
+from mathlibrary import Mathlibrary
 import sys
 
-# create SUM in standard deviation formula as string
-# for evaluating single string
+##
+# @brief Make first sum in formula as a string from given numbers
+# 
+# @param Variable wich contains all numbers separated with '\n'
+# 
+# @return String representing sum of given numbers
 def createSum(inputNumbers):
     total = "( "
     for x in inputNumbers.split():
@@ -22,8 +33,13 @@ def createSum(inputNumbers):
     total += ")"
     return total
 
-#  creating SUM of given numbers divided by count of numbers squared
-# for evaluating single string
+##
+# @brief Make second sum in formula as a string from given numbers
+# 
+# @param Variable wich contains all numbers separated with '\n'
+# 
+# @return String representing sum of given numbers divided by count of numbers
+# than squared and multiplied with count of numbers
 def createSubSum(inputNumbers):
     totalSubSum = "( ( ( ( "
     N = 0
@@ -35,21 +51,22 @@ def createSubSum(inputNumbers):
     totalSubSum += " ) / " + str(N) + " ) ^ 2 ) * " + str(N) + " )"
     return totalSubSum
 
-#Main. oneString variable is used as switch to do profiling
-# either with one giant string or with some side calculations
+##
+# @brief Compute standard deviation either as one string or with side calculations
+# prints result and make a .png graph
 if __name__ == '__main__':
     inputNumbers=""
-    oneString = True
+    # Switch between one string and side calculations computing
+    oneString = False
     N = 0 
-    #Read numbers from stdin
+    # Read numbers from stdin
     for line in sys.stdin:
         inputNumbers += line
-    #Replace eol with space
+    # Replace eol with space
     inputNumbers = inputNumbers.replace('\n',' ')
     #Count the numbers
     for x in inputNumbers.split():
         N += 1
-    
 
     #Profiling on one single string
     if oneString:
@@ -67,10 +84,12 @@ if __name__ == '__main__':
         with PyCallGraph(output=GraphvizOutput()):
             #Calculate SUM of numbers and SUM of numbers^2
             for x in inputNumbers.split():
-                firstSum = resolve("{} + {}".format(firstSum, x))#sum of Xi
-                secondSum = resolve("{} + {} ^ 2".format(secondSum, x))
+                firstSum = Mathlibrary.add(firstSum, float(x))#sum of Xi
+                secondSum = Mathlibrary.add(secondSum, Mathlibrary.pow(float(x), 2))
             #N*(x')^2
-            firstSum = resolve("( {} / {} ) ^ 2 * {}".format(firstSum, N, N))
+            firstSum = Mathlibrary.pow(Mathlibrary.div(firstSum, N), 2)
+            firstSum = Mathlibrary.mul(firstSum, N)
+            finalSum = Mathlibrary.sub(secondSum, firstSum)
             #final formula
-            print(resolve("2 √ ( 1 / ( {} - 1 ) * ( {} - {} ) )".format(N, secondSum, firstSum)))
+            print(resolve("2 √ ( 1 / ( {} - 1 ) * {} )".format(N, finalSum)))
 
