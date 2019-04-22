@@ -38,6 +38,7 @@ run:
 profile:
 	echo "30 1 2.3 22 3 5.7 4 42 4 144.1 32 413" | python3 profiling.py
 
+# Prints a help message for the user
 help:
 	@echo $(HELP)
 
@@ -45,7 +46,8 @@ help:
 depend:
 	sudo apt-get install python3 python3-pip python3-pyqt5
 
-# Creates a debian installer for the program
+# Creates a debian installer for the program. The installer is generated
+# in the ../installer folder
 installer:
 	rm -f $(INSTALLER).deb
 	mkdir -p $(INSTALLER)/opt/nem-mad-calc
