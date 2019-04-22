@@ -8,20 +8,22 @@
 #-------------------------------------------------
 
 PROJECT_FOLDER = xsedla1h_xsarva00_xsvobo1t_xosval03
+INSTALLER = ../installer/nem-mad-calc-1.0
 .PHONY: all clean test doc run profile prepfolder
 
 
 # Main project targets
 all: run 
 
-pack: clean prepfolder
+pack: prepfolder
 	cd ../../ && zip -r $(PROJECT_FOLDER).zip $(PROJECT_FOLDER)
 	rm -rf ../../$(PROJECT_FOLDER)
 
 clean:
 	rm -rf __pycache__ ../__pycache__ .idea ../.idea
 	rm -rf ../doc 
-	rm -rf ../installer/nem-mad-calc-1.0*
+	rm -f pycallgraph.png
+	rm -rf $(INSTALLER)*
 
 test:
 	python3 mathlibtests.py
@@ -34,28 +36,38 @@ run:
 	python3 main.py
 
 profile:
-	echo "30 1 2 22 3 5 4 42 4 144" | python3 profiling.py
+	echo "30 1 2.3 22 3 5.7 4 42 4 144.1 32 413" | python3 profiling.py
 
 help:
+	@echo $(HELP)
+
+# Installs necessary dependencies for the project
+depend:
+	sudo apt-get install python3 python3-pip python3-pyqt5
+
+# Creates a debian installer for the program
+installer:
+	rm -f $(INSTALLER).deb
+	mkdir -p $(INSTALLER)/opt/nem-mad-calc
+	cp -r ../installer/DEBIAN $(INSTALLER)
+	cp -a main.py calculator.py ui_calculator.py stack.py evaluate.py mathlibrary.py $(INSTALLER)/opt/nem-mad-calc/
+	chmod +x $(INSTALLER)/DEBIAN/*
+	dpkg-deb --build $(INSTALLER)
+	rm -rf $(INSTALLER)
+
 
 # Other targets utilised by some of the main targets
-prepfolder: doc
+prepfolder: installer doc
 	cd ../../ && rm -rf $(PROJECT_FOLDER) $(PROJECT_FOLDER).zip
 	mkdir ../../$(PROJECT_FOLDER)
 	cd ../../$(PROJECT_FOLDER) && mkdir repo && mkdir install && mkdir doc
-	cd ../ && cp -a installer/* ../$(PROJECT_FOLDER)/install
+	cp -a $(INSTALLER).deb ../../$(PROJECT_FOLDER)/install
 	cd ../ && cp -ar doc/* ../$(PROJECT_FOLDER)/doc
 	cd ../../ && cp -ar IVS-2019-project2/. $(PROJECT_FOLDER)/repo
 	cd ../../$(PROJECT_FOLDER)/repo && rm -rf installer doc
 	rm -rf ../doc
 
-dependencies:
-	pip3 install --user pyqt5
-
-installer:
-	mkdir -p ../installer/nem-mad-calc-1.0/opt/nem-mad-calc
-	cp -r ../installer/DEBIAN ../installer/nem-mad-calc-1.0
-	cp -a main.py calculator.py ui_calculator.py stack.py evaluate.py mathlibrary.py ../installer/nem-mad-calc-1.0/opt/nem-mad-calc/
-	cp main.py mathlibrary.py evaluate.py calculator.py ui_calculator.py stack.py ../installer/nem-mad-calc-1.0
-	chmod +x ../installer/nem-mad-calc-1.0/DEBIAN/*
-	dpkg-deb --build ../installer/nem-mad-calc-1.0
+# Stores help text
+HELP=Before launching the program, please make sure you have all the necessary dependencies installed.\
+You can do so by typing in the command make depend. This command will check the dependencies and if missing,\
+it will ask you for permission to install them.
