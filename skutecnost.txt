@@ -11,19 +11,23 @@ napriklad casovou narocnost jednotlivych ukolu.
 Toto se v prubehu prace na projektu odrazilo na nasi schopnosti
 dodrzet stanovene terminy. Ze zacatku se nam terminy dodrzovat
 darilo, avsak postupne se objevovaly ruzne komplikace a bylo nutne
-vyresit dalsi problemy, se kterymi se pri planovani nepocitalo.
+vyresit dalsi problemy - svou narocnosti presahujici nase puvodni
+ocekavani - se kterymi se pri planovani nepocitalo.
 
 To v dusledku vedlo k tomu, ze bylo nutne znovu prerozdelit nektere
-ukoly, cimz se vyrazne zpomalila prace na nich.
+stare ukoly - cimz se ponekud zpomalila prace na nich - a do planu
+zaradit nektere ukoly kompletne nove.
+
+Napriklad:
 
 1) Vyskytly se komplikace pri psani parseru vstupu kalkulacky a dokud se
    je nepodarilo vyresit, nebylo mozne kalkulacku kompletne sestavit.
 
-3) Prace na GUI zapocaly s mirnym zpozdenim a bylo nutne 
-
 2) Makefile a instalator byly vytvoreny se zpozdenim kvuli neustale se menici
-   strukture repozitare, bugfixu etc..
+   strukture repozitare, nove nalezenym bugum v programu, etc.
 
+3) Kvuli nedostatecne detailnimu planu v zacatcich projektu se musela hotova
+   prace casto pozmenovat, coz vedlo k novym chybam a nutnosti dalsich oprav.
+   Dusledkem toho se nektere ukoly protahly na nekolikanasobek planovaneho trvani.
 
-
-Ke konci projektu nam zpozdeni oproti planu narostlo na zhruba sedm dni.
+Ke konci projektu nam zpozdeni oproti planu narostlo na prumerne sedm dni.
