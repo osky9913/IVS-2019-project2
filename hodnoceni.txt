@@ -1,0 +1,4 @@
+xsedla1h 100 (matematicka knihovna, instalator, Makefile, backend gui, sprava gitu)
+xsarva00 100 (unit testy, profiling)
+xosval03 100 (zpracovani vstupu, doxygen dokumentace)
+xsvobo1t 100 (zaklad gui, mockup, uzivatelska prirucka)
