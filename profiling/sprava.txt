@@ -1,0 +1,17 @@
+Spustili sme 2 typy profilingu. Každý pre vstupy 10, 100 a 1000 kladných čísel. Prvý typ bol spustený
+ako jeden veľký string, ktorý bol vyhodnotený pomocou funckie resolve. Druhý typ volal priamo funkcie 
+z matematickej knižnice a výsledok súm bol vložený do funckie resolve.
+ 
+V priložených grafoch môžme pozorovať, že funkcie ktoré vyhodnocovali celý vzorec ako jeden výraz 
+a kontrolovali ,či je string korektne zapísaný, trvali najdlhší čas. Tento čas rýchlo narastá so 
+zložitosťou výrazu hlavne kvôli opätovnej kontrole korektnosti výrazu, čísel a zátvoriek. Taktiež
+zmena na postfix formu a práca so stackom. Táto metóda profilingu je nepoužiteľná pre záporné čísla
+kvôli implementácii funckie resolve, ktorá musí mať medzi znakmi a číslami medzeru.
+
+Druhá sada profilingu ukázala, že priame volanie funkcií z matematickej knižnice je oveľa rýchlejšie.
+Tieto funkcie  sú na úrovni, kedy sa nedajú ďalej veľmi optimalizovať. Možné spôsoby sú nezaokrúhľovať 
+výsledok alebo prepísať to do nižšie-úrovňového jazyka. Najväčšia optimalizácia by bola v spôsobe
+implementacie evaluate.
+
+Celkovo matematické funkcie a funkcie na vyhodnotenie výrazov pracujú spoľahlivo v kombinácii s GUI.
+Problémy ako spomalenie môžu nastať hlavne pri obrovských výrazoch pozostávajúcich z miliónov znakov.
